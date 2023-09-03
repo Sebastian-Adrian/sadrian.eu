@@ -620,6 +620,8 @@
 </template>
 <script>
 import styles from './assets/style.css';
+
+
 export default {
   name: 'App',
 }
