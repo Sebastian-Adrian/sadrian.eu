@@ -607,6 +607,11 @@
           </div>
         </div>
       </div>
+      <suspense>
+        <GitHub>
+
+        </GitHub>
+      </suspense>
     </div>
   </div>
 <!--
@@ -620,12 +625,12 @@
 </template>
 <script>
 import styles from './assets/style.css';
-
+import GitHub from "@/components/GitHub.vue";
 
 export default {
   name: 'App',
+  components: {GitHub},
 }
-
 </script>
 <style>
 </style>

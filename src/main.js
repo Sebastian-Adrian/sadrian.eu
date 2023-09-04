@@ -9,7 +9,6 @@ app.use(MotionPlugin);
 app.mount('#app');
 
 const octokit = new Octokit({auth: `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`});
-
 const repos =
     await octokit.request('GET /user/repos', {
         affiliation: 'owner',
