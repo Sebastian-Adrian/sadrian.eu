@@ -1,4 +1,4 @@
-# modal-project
+# sadrian.eu | Vue-Cli
 
 ## Project setup
 ```
