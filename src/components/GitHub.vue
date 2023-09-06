@@ -39,7 +39,9 @@
                 <path d="m320-241.333-240-240 241.333-241.334L369-675 174.999-481l192.334 192.334L320-241.333ZM638.667-240
                 591-287.666l194.001-194.001L592.667-674 640-721.333l240 240L638.667-240Z"/>
               </svg>
-                &nbsp;{{repo.language}}
+              <span>
+                {{repo.language}}
+              </span>
             </span>
             <span>
               <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14"><path
@@ -62,8 +64,10 @@
 <script setup>
   import {Octokit} from "octokit";
   import moment from 'moment';
+  import {forEach} from "core-js/internals/array-iteration";
+  import { onMounted } from 'vue';
 
-  const octokit = new Octokit({auth: `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`});
+  const octokit = new Octokit({auth: API_KEY});
   let repos = await octokit.request('GET /user/repos', {
     affiliation: 'owner',
     headers: {
@@ -71,22 +75,16 @@
     }
   });
   repos = repos.data;
-  console.log(repos)
-
-  /** TODO:  **/
-/*
-  async function getRepoLanguages(name, owner) {
-    let languages = await octokit.request('GET /repos/' + owner + '/' + name + '/languages', {
-      owner: owner,
-      repo: name,
+  repos.forEach(async (repo) => {
+    repo.languages = await (octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/languages', {
+      owner: repo.owner.login,
+      repo: repo.name,
       headers: {
         'X-GitHub-Api-Version': '2022-11-28'
       }
-    });
-    languages = languages.data
-    return languages
-  }
- */
+    }));
+  })
+  console.log(repos)
 
   function openLink(link) {
     window.open(link)

@@ -352,6 +352,11 @@ aside {
 .profile-text {
     text-align: left;
 }
+
+.profile-text p {
+    font-size: 1rem;
+}
+
 .profile-image {
     float: right;
     border-radius: 10%;

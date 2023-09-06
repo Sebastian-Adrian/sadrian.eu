@@ -403,7 +403,6 @@
       </div>
       <suspense>
         <GitHub>
-
         </GitHub>
       </suspense>
       <Contact>
@@ -424,10 +423,12 @@
 import styles from './assets/style.css';
 import GitHub from "@/components/GitHub.vue";
 import Contact from "@/components/Contact.vue";
+import {Octokit} from "octokit";
 
 export default {
   name: 'App',
   components: {GitHub, Contact}
+
 }
 </script>
 <style>
