@@ -1,7 +1,0 @@
-name: API Secret
-
-on:
-  workflow_dispatch:
-
-env:
-  API_KEY: ${{ secrets.API_KEY }}
