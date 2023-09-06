@@ -64,7 +64,17 @@
       <div v-motion-slide-visible-right>
           <div class="info-table-2">
             <div class="info-table__cell-2">
-              <h2>Skillset</h2>
+              <div class="box-title">
+                <span>
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960"
+                       width="32"><path
+                      d="M281.731-121.731v-149.257q-57.385-51.895-88.693-116.666-31.307-64.772-31.307-132.972 0-132.375 92.8-225.201 92.8-92.827 225.371-92.827 107.944 0 194.754 65.638 86.809 65.637 112.537 168.901l41.473 164.169q3.604 14.845-5.48 26.53-9.083 11.685-24.724 11.685h-79.808v138.462q0 25.745-18.077 43.642-18.077 17.896-43.461 17.896h-98.462v80h-36.923v-116.923h135.385q10.384 0 17.499-6.923 7.116-6.923 7.116-17.692v-175.385h108.115L751.731-595.5q-23.385-91.885-99.577-149.058-76.192-57.173-172.162-57.173-116.607 0-198.973 81.729-82.365 81.728-82.365 198.771 0 60.188 24.558 114.433 24.557 54.246 70.057 96.108l25.385 23.305v165.654h-36.923Zm212.769-340ZM459.646-380h42.046l2.924-35.762q15.692-2.93 29.884-10.584t24.423-19.192l30.308 14.923 21.077-35.539-28-20.308q6.615-16.769 6.615-33.538t-6.615-33.538l28-20.308-21.077-35.539-30.308 14.923Q548.692-606 534.5-613.601q-14.192-7.602-29.884-10.707L501.585-660h-42.047l-2.923 35.762q-15.692 2.93-29.884 10.584-14.193 7.654-24.423 19.192L372-609.385l-21.077 35.539 28 20.308q-6.615 16.769-6.615 33.538t6.615 33.538l-28 20.308L372-430.615l30.308-14.923q10.23 11.538 24.423 19.139 14.192 7.602 29.884 10.707L459.646-380Zm20.924-65.385q-31.108 0-52.839-21.776Q406-488.937 406-520.045q0-31.109 21.776-52.84 21.776-21.73 52.885-21.73 31.108 0 52.839 21.776 21.731 21.776 21.731 52.884 0 31.109-21.776 52.84-21.776 21.73-52.885 21.73Z"/>
+                  </svg>
+                </span>
+                <span>
+                  Skillset
+                </span>
+              </div>
               <div class="info-table__content">
                 <table>
                   <thead>
@@ -131,276 +141,25 @@
       <div v-motion-slide-visible-left>
         <div class="info-table-3">
           <div class="info-table__cell-3">
-            <h2>Mars Exploration Program</h2>
-            <p class="info-table__subtitle">Perseverance Rover</p>
+            <div class="box-title">
+              <span>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960"
+                     width="32"><path
+                    d="M472.5-166.154v-36.923h260.308q9.615 0 17.115-6.154 7.5-6.154 7.5-16.153v-272.462q0-111.039-82.038-185.519Q593.346-757.846 480-757.846q-113.462 0-195.5 74.481-82.038 74.48-82.038 185.519v222.769h-18.27q-23.808 0-40.923-15.961-17.115-15.962-17.115-39.77v-74.269q0-17.808 11.653-30.885 11.654-13.077 27.731-22.153l.693-48.539q1.961-61 28.096-113.654 26.134-52.654 68.538-91.327 42.404-38.673 98.693-60.442Q417.846-793.846 480-793.846q62.154 0 118.135 21.769 55.98 21.769 98.634 60.327 42.654 38.557 68.539 90.961Q791.193-568.385 793.654-507l.692 48.154q15.308 6.961 27.404 19.154 12.096 12.192 12.096 29.5v85.269q0 17.308-12.096 29.5t-27.404 19.154v50.885q0 24.846-17.961 42.038-17.962 17.192-43.577 17.192H472.5Zm-95.385-254.654q-12.038 0-20.731-7.923-8.692-7.923-8.692-19.577 0-11.654 8.692-20.154 8.693-8.5 20.731-8.5 11.654 0 20.346 8.5 8.693 8.5 8.693 20.154t-8.693 19.577q-8.692 7.923-20.346 7.923Zm206.154 0q-12.038 0-20.73-7.923-8.693-7.923-8.693-19.577 0-11.654 8.693-20.154 8.692-8.5 20.73-8.5 11.654 0 20.347 8.5 8.692 8.5 8.692 20.154t-8.692 19.577q-8.693 7.923-20.347 7.923Zm-310.385-62.923q-4.5-87.384 57.462-148.904 61.962-61.519 151.539-61.519 75.23 0 134 45.269 58.769 45.27 72.115 118.616-78.231-1.116-145.404-39.423Q475.423-608 439.769-677.231q-13.961 67.5-58.596 118.135-44.635 50.635-108.289 75.365Z"/>
+                </svg>
+              </span>
+              <span>
+                Services
+              </span>
+            </div>
+            <p class="info-table__subtitle">Folgende Leistungen biete ich an</p>
             <div class="txt-block__content">
-              <img class="img-float-l" src="./assets/KI_640.jpg" alt="Sprachmodelle" width="25%"/>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consectetur dicta dolore dolorem
-                doloremque earum est, et exercitationem explicabo impedit libero numquam porro possimus qui quidem
-                suscipit velit, veniam voluptatibus.
-              </p>
-              <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </p>
+
             </div>
           </div>
         </div>
       </div>
-      <div v-motion-slide-visible-right>
-        <div class="info-table-2">
-          <div class="info-table__cell-2">
-            <h2>Skillset</h2>
-            <div class="info-table__content">
-              <table>
-                <thead>
-                <tr>
-                  <td>Languages</td>
-                  <td>Frameworks</td>
-                  <td>Software</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>JAVA</td>
-                  <td>SpringBoot</td>
-                  <td>IntelliJ</td>
-                </tr>
-                <tr>
-                  <td>Javascript</td>
-                  <td>Vue.js</td>
-                  <td>vsCode</td>
-                </tr>
-                <tr>
-                  <td>Python</td>
-                  <td>PyQt5</td>
-                  <td>PyCharm</td>
-                </tr>
-                <tr>
-                  <td>PHP, HTML5, CSS3 (Sass)</td>
-                  <td>Node.js</td>
-                  <td>PhpStorm</td>
-                </tr>
-                </tbody>
-              </table>
-              <details>
-                <summary> </summary>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td>Kotlin</td>
-                    <td>Bootstrap</td>
-                    <td>Webstorm</td>
-                  </tr>
-                  <tr>
-                    <td>shellscript</td>
-                    <td>(..))</td>
-                    <td>Unix</td>
-                  </tr>
-                  <tr>
-                    <td>C++</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>United Launch Alliance</td>
-                    <td>CCDev1,CCDev2</td>
-                    <td>$6.7 million</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </details>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-motion-slide-visible-left>
-        <div class="info-table-3">
-          <div class="info-table__cell-3">
-            <h2>Mars Exploration Program</h2>
-            <p class="info-table__subtitle">Perseverance Rover</p>
-            <div class="txt-block__content">
-              <img class="img-float-l" src="./assets/KI_640.jpg" alt="Sprachmodelle" width="25%"/>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consectetur dicta dolore dolorem
-                doloremque earum est, et exercitationem explicabo impedit libero numquam porro possimus qui quidem
-                suscipit velit, veniam voluptatibus.
-              </p>
-              <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-motion-slide-visible-right>
-        <div class="info-table-2">
-          <div class="info-table__cell-2">
-            <h2>Skillset</h2>
-            <div class="info-table__content">
-              <table>
-                <thead>
-                <tr>
-                  <td>Languages</td>
-                  <td>Frameworks</td>
-                  <td>Software</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>JAVA</td>
-                  <td>SpringBoot</td>
-                  <td>IntelliJ</td>
-                </tr>
-                <tr>
-                  <td>Javascript</td>
-                  <td>Vue.js</td>
-                  <td>vsCode</td>
-                </tr>
-                <tr>
-                  <td>Python</td>
-                  <td>PyQt5</td>
-                  <td>PyCharm</td>
-                </tr>
-                <tr>
-                  <td>PHP, HTML5, CSS3 (Sass)</td>
-                  <td>Node.js</td>
-                  <td>PhpStorm</td>
-                </tr>
-                </tbody>
-              </table>
-              <details>
-                <summary> </summary>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td>Kotlin</td>
-                    <td>Bootstrap</td>
-                    <td>Webstorm</td>
-                  </tr>
-                  <tr>
-                    <td>shellscript</td>
-                    <td>(..))</td>
-                    <td>Unix</td>
-                  </tr>
-                  <tr>
-                    <td>C++</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>United Launch Alliance</td>
-                    <td>CCDev1,CCDev2</td>
-                    <td>$6.7 million</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </details>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-motion-slide-visible-left>
-        <div class="info-table-3">
-          <div class="info-table__cell-3">
-            <h2>Mars Exploration Program</h2>
-            <p class="info-table__subtitle">Perseverance Rover</p>
-            <div class="txt-block__content">
-              <img class="img-float-l" src="./assets/KI_640.jpg" alt="Sprachmodelle" width="25%"/>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consectetur dicta dolore dolorem
-                doloremque earum est, et exercitationem explicabo impedit libero numquam porro possimus qui quidem
-                suscipit velit, veniam voluptatibus.
-              </p>
-              <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div v-motion-slide-visible-right>
-        <div class="info-table-2">
-          <div class="info-table__cell-2">
-            <h2>Skillset</h2>
-            <div class="info-table__content">
-              <table>
-                <thead>
-                <tr>
-                  <td>Languages</td>
-                  <td>Frameworks</td>
-                  <td>Software</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>JAVA</td>
-                  <td>SpringBoot</td>
-                  <td>IntelliJ</td>
-                </tr>
-                <tr>
-                  <td>Javascript</td>
-                  <td>Vue.js</td>
-                  <td>vsCode</td>
-                </tr>
-                <tr>
-                  <td>Python</td>
-                  <td>PyQt5</td>
-                  <td>PyCharm</td>
-                </tr>
-                <tr>
-                  <td>PHP, HTML5, CSS3 (Sass)</td>
-                  <td>Node.js</td>
-                  <td>PhpStorm</td>
-                </tr>
-                </tbody>
-              </table>
-              <details>
-                <summary> </summary>
-                <table>
-                  <tbody>
-                  <tr>
-                    <td>Kotlin</td>
-                    <td>Bootstrap</td>
-                    <td>Webstorm</td>
-                  </tr>
-                  <tr>
-                    <td>shellscript</td>
-                    <td>(..))</td>
-                    <td>Unix</td>
-                  </tr>
-                  <tr>
-                    <td>C++</td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>United Launch Alliance</td>
-                    <td>CCDev1,CCDev2</td>
-                    <td>$6.7 million</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </details>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <suspense>
         <GitHub>
         </GitHub>

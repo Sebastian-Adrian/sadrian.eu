@@ -1,9 +1,12 @@
 <template>
     <div v-for="repo in repos" v-motion-fade-visible class="info-table-4" v-on:click.stop.prevent="openLink(repo.html_url)">
       <div class="info-table__cell-4">
-        <div class="github">
+        <div class="box-title">
           <span>
-            <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>&nbsp;GitHub
+            <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>
+          </span>
+          <span>
+            GitHub
           </span>
         </div>
         <h2>{{ repo.name }}</h2>
@@ -67,7 +70,7 @@
   import {forEach} from "core-js/internals/array-iteration";
   import { onMounted } from 'vue';
 
-  const octokit = new Octokit({auth: API_KEY});
+  const octokit = new Octokit({auth: `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`});
   let repos = await octokit.request('GET /user/repos', {
     affiliation: 'owner',
     headers: {
@@ -89,7 +92,6 @@
   function openLink(link) {
     window.open(link)
   }
-
   function formatDate(date) {
     if (date) {
       return moment(String(date)).format('YYYY-MM-DD')

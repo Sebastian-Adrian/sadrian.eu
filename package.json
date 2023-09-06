@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
     "@vueuse/motion": "^2.0.0",
     "aos": "^3.0.0-beta.6",
     "core-js": "^3.8.3",

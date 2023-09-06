@@ -90,16 +90,16 @@ details[open] summary::after {
     margin-top: 6vh;
 }
 
-.github {
+.box-title {
     width: 100%;
     height: 24px;
     display: flex;
     margin: 2%;
 }
 
-.github span {
+.box-title span {
     display: inline-flex;
-    margin: 0;
+    margin-right: 5px;
     padding:0;
     align-items: center;
     text-align: left;
