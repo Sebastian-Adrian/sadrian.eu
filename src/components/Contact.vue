@@ -8,7 +8,7 @@
           Kontakt
         </span>
       </div>
-      <form>
+      <form @submit.prevent="handleSubmit">
         <label>Name </label>
         <input type="text" required v-model="contact_name">
         <label>E-mail </label>
@@ -19,7 +19,7 @@
         <textarea required v-model="message" rows="8"></textarea>
       </form>
       <div class="submit">
-
+        <button @click="handleSubmit">abschicken</button>
       </div>
     </div>
   </div>
@@ -35,6 +35,11 @@ export default {
       subject: '',
       message: ''
     }
+  },
+  methods: {
+    handleSubmit() {
+      console.log("submitted")
+    },
   }
 }
 
