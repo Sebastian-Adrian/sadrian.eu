@@ -1,6 +1,7 @@
 <template>
-    <div v-for="repo in repos" v-motion-fade-visible class="info-table-4" v-on:click.stop.prevent="openLink(repo.html_url)">
-      <div class="info-table__cell-4">
+    <div v-for="repo in repos" v-motion-fade-visible-once class="github-box"
+         v-on:click.stop.prevent="openLink(repo.html_url)">
+      <div class="github-box__cell">
         <div class="box-title">
           <span>
             <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>
@@ -87,7 +88,6 @@
       }
     }));
   })
-  console.log(repos)
 
   function openLink(link) {
     window.open(link)
