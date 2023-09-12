@@ -26,7 +26,10 @@
 </template>
 
 <script>
+import nodemailer from 'nodemailer';
+import emailConfig from '../emails/emailConfig.js';
 
+const transporter = nodemailer.createTransport(emailConfig);
 export default {
   data() {
     return {
@@ -38,11 +41,26 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("submitted")
+      console.log("ausgelöst")
+      this.sendEmail()
     },
-  }
-}
+    async sendEmail() {
+      const mailOptions = {
+        from: this.email,
+        to: 'mail@sadrian.eu',
+        subject: this.subject,
+        text: this.message,
+      };
 
+      try {
+        await transporter.sendMail(mailOptions);
+        console.log('E-Mail erfolgreich gesendet');
+      } catch (error) {
+        console.error('Fehler beim Senden der E-Mail', error);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
