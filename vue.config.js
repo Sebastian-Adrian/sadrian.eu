@@ -8,6 +8,7 @@ module.exports = defineConfig({
         ],
     },
     devServer: {
-        proxy: 'https://localhost:3000' // enter dev server url here
+        // Dev-Server
+        proxy: 'https://localhost:3000'
     }
 })
