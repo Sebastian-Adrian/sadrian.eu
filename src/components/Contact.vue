@@ -19,14 +19,15 @@
         <textarea required v-model="message" rows="8"></textarea>
       </form>
       <div class="submit">
-
+        <button @click="sendEmail">
+          abschicken
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -35,7 +36,33 @@ export default {
       subject: '',
       message: ''
     }
-  }
+  },
+  methods: {
+    async sendEmail() {
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: this.email,
+            subject: this.subject,
+            text: this.message,
+            name: this.contact_name
+          }),
+        });
+
+        if (response.ok) {
+          console.log('E-Mail erfolgreich gesendet');
+        } else {
+          console.error('Fehler beim Senden der E-Mail');
+        }
+      } catch (error) {
+        console.error('Fehler beim Senden der E-Mail', error);
+      }
+    },
+  },
 }
 
 </script>
