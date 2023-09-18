@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-box" v-motion-pop-visible-once>
+  <div v-motion-pop-visible-once class="contact-box" ref="contactBox">
     <div class="contact-box__cell">
       <div class="box-title">
         <span class="contact-logo">
@@ -10,13 +10,16 @@
       </div>
       <form>
         <label>Name </label>
-        <input type="text" required v-model="contact_name">
-        <label>E-mail </label>
-        <input type="email" required v-model="email">
+        <input v-model="contact_name" required type="text">
+        <label>E-mail</label>
+        <span v-if="email">
+          <label v-if="!validEmail" class="invalidMailLabel">ungültige Email</label>
+        </span>
+        <input v-model="email" :class="{invalidMailInput: !validEmail && email}" required type="email">
         <label>Betreff </label>
-        <input type="text" required v-model="subject">
+        <input v-model="subject" required type="text">
         <label>Nachricht </label>
-        <textarea required v-model="message" rows="8"></textarea>
+        <textarea v-model="message" required rows="8"></textarea>
       </form>
       <div class="submit">
         <button @click="sendEmail">
@@ -28,7 +31,14 @@
 </template>
 
 <script>
+import emitter from "@/helpers/eventBus"
 export default {
+  computed:
+    {
+      validEmail() {
+        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)
+      }
+    },
   data() {
     return {
       email: '',
@@ -63,38 +73,81 @@ export default {
       }
     },
   },
+  mounted() {
+    // Auf das Ereignis hören und scrollen
+    emitter.on('contactBox', () => {
+      // Zugriff auf das Ziel-Element über die Ref-Referenz
+      const targetElement = this.$refs.contactBox;
+
+      // Scrollen zum Ziel-Element
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 }
 
 </script>
 
 <style scoped>
 form {
-  max-width: 420px;
   margin: 30px auto;
-  text-align: left;
+  max-width: 420px;
   padding: 20px;
+  text-align: left;
 }
 
 label {
   display: inline-block;
-  margin: 15px 0 5px;
   font-size: .85rem;
+  margin: 15px 0 5px;
 }
 
 input {
+  background-color: #fffffa;
+  border-radius: 5px;
+  box-sizing: border-box;
   display: block;
   padding: 5px 6px;
   width: 100%;
-  box-sizing: border-box;
 
+}
+
+.invalidMailInput {
+  border-color: red;
+}
+
+.invalidMailInput:focus {
+  border-color: red
+}
+
+
+input:focus {
+  background-color: #E6E6E1;
+  border-color: #6C9959;
+  outline: none;
 }
 
 textarea {
+  background-color: #fffffa;
+  border-radius: 5px;
+  box-sizing: border-box;
   display: block;
   padding: 5px 6px;
   width: 100%;
-  box-sizing: border-box;
 }
 
+textarea:focus {
+  background-color: #E6E6E1;
+  border-color: #6C9959;
+  outline: none;
+}
+
+.invalidMailLabel {
+  color: #d00000;
+  font-size:.85rem;
+  font-style: italic;
+  font-weight: bold;
+  margin-left: 10px;
+  text-align: center;
+}
 
 </style>

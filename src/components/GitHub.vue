@@ -1,5 +1,5 @@
 <template>
-    <div v-for="repo in repos" v-motion-fade-visible-once class="github-box"
+    <div v-for="repo in repos" :key="repo.id" ref="scroll-to-target" v-motion-fade-visible-once class="github-box"
          v-on:click.stop.prevent="openLink(repo.html_url)">
       <div class="github-box__cell">
         <div class="box-title">
@@ -36,68 +36,115 @@
                     0-18.475-7.68-7.942-7.679-7.942-18.211 0-10.533 7.679-18.475 7.679-7.942 18.212-7.942 10.532 0 18.475
                     7.679 7.942 7.679 7.942 18.212 0 10.532-7.679 18.474-7.679 7.943-18.212 7.943Z"/>
               </svg>
-                {{formatDate(repo.created_at)}}
+                {{ formatDate(repo.created_at) }}
             </span>
             <span v-if="repo.language">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14">
+              <svg class="icon" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg">
                 <path d="m320-241.333-240-240 241.333-241.334L369-675 174.999-481l192.334 192.334L320-241.333ZM638.667-240
                 591-287.666l194.001-194.001L592.667-674 640-721.333l240 240L638.667-240Z"/>
               </svg>
               <span>
-                {{repo.language}}
+                {{ getLanguages(repo.languages) }}
               </span>
             </span>
             <span>
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 -960 960 960" width="14"><path
+              <svg class="icon" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path
                   d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
               </svg>
-               &nbsp;{{repo.watchers}}
+               &nbsp;{{ repo.watchers }}
             </span>
             <span>
-              <svg class="icon" width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
-                   fill="#000000"><path d="M14 4a2 2 0 1 0-2.47 1.94V7a.48.48 0 0 1-.27.44L8.49 8.88l-2.76-1.4A.49.49 0 0 1 5.46 7V5.94a2 2 0 1 0-1 0V7a1.51 1.51 0 0 0 .82 1.34L8 9.74v1.32a2 2 0 1 0 1 0V9.74l2.7-1.36A1.49 1.49 0 0 0 12.52 7V5.92A2 2 0 0 0 14 4zM4 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm5.47 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM12 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              <svg class="icon" fill="#000000" height="14" viewBox="0 0 16 16" width="14"
+                   xmlns="http://www.w3.org/2000/svg"><path
+                  d="M14 4a2 2 0 1 0-2.47 1.94V7a.48.48 0 0 1-.27.44L8.49 8.88l-2.76-1.4A.49.49 0 0 1 5.46 7V5.94a2 2 0 1 0-1 0V7a1.51 1.51 0 0 0 .82 1.34L8 9.74v1.32a2 2 0 1 0 1 0V9.74l2.7-1.36A1.49 1.49 0 0 0 12.52 7V5.92A2 2 0 0 0 14 4zM4 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm5.47 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM12 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
               </svg>
-              &nbsp;{{repo.forks}}
+              &nbsp;{{ repo.forks }}
             </span>
           </div>
         </div>
       </div>
     </div>
+
 </template>
 
 <script setup>
-  import {Octokit} from "octokit";
-  import moment from 'moment';
-  import {forEach} from "core-js/internals/array-iteration";
-  import { onMounted } from 'vue';
+import emitter from "@/helpers/eventBus";
+import { ref, onMounted } from 'vue';
+import { Octokit } from 'octokit';
+import moment from 'moment';
+import githubConfig from '@/githubConfig.js';
 
-  const octokit = new Octokit({auth: `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`});
-  let repos = await octokit.request('GET /user/repos', {
-    affiliation: 'owner',
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28'
-    }
-  });
-  repos = repos.data;
-  repos.forEach(async (repo) => {
-    repo.languages = await (octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/languages', {
-      owner: repo.owner.login,
-      repo: repo.name,
+const octokit = new Octokit({ auth: githubConfig.key });
+const repos = ref([]);
+const formatDate = (date) => {
+  if (date) {
+    return moment(String(date)).format('YYYY-MM-DD');
+  }
+};
+const openLink = (link) => {
+  window.open(link);
+};
+
+const getLanguages = (languagesObj) => {
+  if (languagesObj) {
+    return Object.keys(languagesObj).join(', ');
+  } else {
+    return 'Unknown'; // Fallback, wenn keine Sprachen vorhanden sind
+  }
+};
+
+onMounted(async () => {
+  try {
+    // Abrufen der Repositories
+    const response = await octokit.request('GET /user/repos', {
+      affiliation: 'owner',
       headers: {
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    }));
-  })
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    });
+    const reposData = response.data;
 
-  function openLink(link) {
-    window.open(link)
-  }
-  function formatDate(date) {
-    if (date) {
-      return moment(String(date)).format('YYYY-MM-DD')
-    }
-  }
+    // Gleichzeitiges Abrufen von Sprachen für jedes Repo mit Promise.all
+    await Promise.all(
+        reposData.map(async (repo) => {
+          const languagesResponse = await octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/languages', {
+            owner: repo.owner.login,
+            repo: repo.name,
+            headers: {
+              'X-GitHub-Api-Version': '2022-11-28',
+            },
+          });
+          console.log(languagesResponse.data);
+          repo.languages = languagesResponse.data;
+        })
+    );
+    repos.value = reposData;
 
+  } catch (error) {
+    console.error('Fehler beim Abrufen der Daten:', error);
+  }
+});
+
+
+const scrollToPortfolio = () => {
+  // Event auslösen, um das Scrollen anzufordern
+  emitter.emit('scroll-to-target');
+};
+
+
+// Ref-Referenz für das Ziel-Element
+const scrollTarget = ref(null);
+
+// Auf das Ereignis hören und scrollen
+emitter.on('scroll-to-target', () => {
+  // Zugriff auf das Ziel-Element über die Ref-Referenz
+  const targetElement = scrollTarget.value;
+
+  if (targetElement) {
+    // Scrollen zum Ziel-Element
+    targetElement.scrollIntoView({ behavior: 'smooth' });
+  }
+});
 </script>
 
 <style scoped>

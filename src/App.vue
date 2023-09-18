@@ -10,14 +10,14 @@
             <span>Profil</span>
           </div>
         </div>
-        <div class="btn btn-one">
+        <div class="btn btn-one" @click="">
           <div class="btn_span">
             <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="40">
               <path class="icon" d="m320-241.333-240-240 241.333-241.334L369-675 174.999-481l192.334 192.334L320-241.333ZM638.667-240 591-287.666l194.001-194.001L592.667-674 640-721.333l240 240L638.667-240Z"/></svg>
             <span>Portfolio</span>
           </div>
         </div>
-        <div class="btn btn-one">
+        <div class="btn btn-one" @click="scrollTo('contactBox')">
           <div class="btn_span">
             <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="40">
               <path class="icon" d="M252-306.666q51.377 0 100.022 11.833t95.978 35.5v-416q-43.667-28.001-94.079-43.001-50.413-15-101.921-15-37.334 0-73.5 8.667Q142.333-716 106.666-702v421.334Q139-294 176.833-300.333q37.833-6.333 75.167-6.333Zm262.667 47.333q48-23.667 94.833-35.5 46.833-11.833 98.5-11.833 37.334 0 75.834 6t69.5 16.666v-418q-33.667-16-70.715-23.667-37.049-7.667-74.619-7.667-51.667 0-100.667 15t-92.666 43.001v416ZM481.333-160q-50-38-108.666-58.667Q314-239.333 252-239.333q-38.358 0-75.346 9.666-36.987 9.667-72.654 25-22.4 11-43.2-2.333Q40-220.334 40-245.334v-469.333q0-13.666 6.5-25.333Q53-751.667 66-758q43.333-21.333 90.263-31.667Q203.193-800 252-800q61.333 0 119.5 16.333Q429.667-767.333 481.333-734q51-33.333 108.5-49.667Q647.333-800 708-800q48.579 0 95.29 10.333Q850-779.333 893.333-758q13 6.333 19.834 18Q920-728.333 920-714.667v469.333q0 26.263-21.5 39.965-21.5 13.702-43.167.702-35-16-71.987-25.333-36.988-9.333-75.346-9.333-62 0-119.333 21-57.334 21-107.334 58.333Zm-204-330.667Z"/></svg>
@@ -163,11 +163,26 @@ import styles from './assets/style.css';
 import GitHub from "@/components/GitHub.vue";
 import Contact from "@/components/Contact.vue";
 import Services from "@/components/Services.vue"
+import emitter from "@/helpers/eventBus"
 
 export default {
   name: 'App',
-  components: {GitHub, Contact, Services}
+  components: {GitHub, Contact, Services},
+  methods: {
+    scrollTo(element) {
+      emitter.emit(element);
+    }
+  },
+  mounted() {
+    // Auf das Ereignis hören und scrollen
+    emitter.on('githubBox', () => {
+      // Zugriff auf das Ziel-Element über die Ref-Referenz
+      const targetElement = this.$refs.githubBox;
 
+      // Scrollen zum Ziel-Element
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 }
 </script>
 <style>
