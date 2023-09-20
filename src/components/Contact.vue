@@ -1,90 +1,67 @@
 <template>
-  <div v-motion-pop-visible-once class="contact-box" ref="contactBox">
+  <div v-motion-pop-visible-once class="contact-box" :id="componentName">
     <div class="contact-box__cell">
       <div class="box-title">
-        <span class="contact-logo">
-        </span>
-        <span>
-          Kontakt
-        </span>
+        <span class="contact-logo"></span>
+        <span>Kontakt</span>
       </div>
       <form>
-        <label>Name </label>
+        <label>Name</label>
         <input v-model="contact_name" required type="text">
-        <label>E-mail</label>
+        <label>E-Mail</label>
         <span v-if="email">
-          <label v-if="!validEmail" class="invalidMailLabel">ungültige Email</label>
+          <label v-if="!validEmail" class="invalidMailLabel">Ungültige Email</label>
         </span>
-        <input v-model="email" :class="{invalidMailInput: !validEmail && email}" required type="email">
-        <label>Betreff </label>
+        <input v-model="email" :class="{ invalidMailInput: !validEmail && email }" required type="email">
+        <label>Betreff</label>
         <input v-model="subject" required type="text">
-        <label>Nachricht </label>
+        <label>Nachricht</label>
         <textarea v-model="message" required rows="8"></textarea>
       </form>
       <div class="submit">
-        <button @click="sendEmail">
-          abschicken
-        </button>
+        <button @click="sendEmail">abschicken</button>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import emitter from "@/helpers/eventBus"
-export default {
-  computed:
-    {
-      validEmail() {
-        return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)
-      }
-    },
-  data() {
-    return {
-      email: '',
-      contact_name: '',
-      subject: '',
-      message: ''
-    }
-  },
-  methods: {
-    async sendEmail() {
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: this.email,
-            subject: this.subject,
-            text: this.message,
-            name: this.contact_name
-          }),
-        });
+<script setup>
+import {computed, ref} from 'vue';
 
-        if (response.ok) {
-          console.log('E-Mail erfolgreich gesendet');
-        } else {
-          console.error('Fehler beim Senden der E-Mail');
-        }
-      } catch (error) {
-        console.error('Fehler beim Senden der E-Mail', error);
-      }
-    },
-  },
-  mounted() {
-    // Auf das Ereignis hören und scrollen
-    emitter.on('contactBox', () => {
-      // Zugriff auf das Ziel-Element über die Ref-Referenz
-      const targetElement = this.$refs.contactBox;
+const email = ref('');
+const contact_name = ref('');
+const subject = ref('');
+const message = ref('');
+const componentName = 'Contact';
 
-      // Scrollen zum Ziel-Element
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+const validEmail = computed(() => {
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value);
+});
+
+const sendEmail = async () => {
+  try {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: email.value,
+        subject: subject.value,
+        text: message.value,
+        name: contact_name.value,
+      }),
     });
-  }
-}
 
+    if (response.ok) {
+      console.log('E-Mail erfolgreich gesendet');
+    } else {
+      console.error('Fehler beim Senden der E-Mail');
+    }
+  } catch (error) {
+    console.error('Fehler beim Senden der E-Mail', error);
+  }
+};
 </script>
 
 <style scoped>
@@ -97,7 +74,7 @@ form {
 
 label {
   display: inline-block;
-  font-size: .85rem;
+  font-size: 0.85rem;
   margin: 15px 0 5px;
 }
 
@@ -108,7 +85,6 @@ input {
   display: block;
   padding: 5px 6px;
   width: 100%;
-
 }
 
 .invalidMailInput {
@@ -116,9 +92,8 @@ input {
 }
 
 .invalidMailInput:focus {
-  border-color: red
+  border-color: red;
 }
-
 
 input:focus {
   background-color: #E6E6E1;
@@ -143,11 +118,10 @@ textarea:focus {
 
 .invalidMailLabel {
   color: #d00000;
-  font-size:.85rem;
+  font-size: 0.85rem;
   font-style: italic;
   font-weight: bold;
   margin-left: 10px;
   text-align: center;
 }
-
 </style>

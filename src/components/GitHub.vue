@@ -1,5 +1,5 @@
 <template>
-    <div v-for="repo in repos" :key="repo.id" ref="scroll-to-target" v-motion-fade-visible-once class="github-box"
+    <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once class="github-box" :id="componentName"
          v-on:click.stop.prevent="openLink(repo.html_url)">
       <div class="github-box__cell">
         <div class="box-title">
@@ -73,7 +73,9 @@ import { ref, onMounted } from 'vue';
 import { Octokit } from 'octokit';
 import moment from 'moment';
 import githubConfig from '@/githubConfig.js';
+import { scrollToComponent } from './Navigation.vue';
 
+const componentName = 'GitHub';
 const octokit = new Octokit({ auth: githubConfig.key });
 const repos = ref([]);
 const formatDate = (date) => {
@@ -114,35 +116,13 @@ onMounted(async () => {
               'X-GitHub-Api-Version': '2022-11-28',
             },
           });
-          console.log(languagesResponse.data);
           repo.languages = languagesResponse.data;
         })
     );
     repos.value = reposData;
 
   } catch (error) {
-    console.error('Fehler beim Abrufen der Daten:', error);
-  }
-});
-
-
-const scrollToPortfolio = () => {
-  // Event auslösen, um das Scrollen anzufordern
-  emitter.emit('scroll-to-target');
-};
-
-
-// Ref-Referenz für das Ziel-Element
-const scrollTarget = ref(null);
-
-// Auf das Ereignis hören und scrollen
-emitter.on('scroll-to-target', () => {
-  // Zugriff auf das Ziel-Element über die Ref-Referenz
-  const targetElement = scrollTarget.value;
-
-  if (targetElement) {
-    // Scrollen zum Ziel-Element
-    targetElement.scrollIntoView({ behavior: 'smooth' });
+    console.error('Fehler beim Abrufen der Repo Daten:', error);
   }
 });
 </script>
