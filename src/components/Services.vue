@@ -70,15 +70,8 @@
     </div>
 </template>
 <script>
-import { Waypoint } from "vue-waypoint";
 export default {
   name: "Services",
-  components: { Waypoint },
-  methods: {
-    handleIntersection(waypointState) {
-      console.log(waypointState.going);
-    },
-  },
 };
 </script>
 <style>

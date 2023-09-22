@@ -1,5 +1,5 @@
 <template>
-<div v-motion-slide-visible-once-left class="about" :class="{hidden: isVisible}">
+<div v-motion-slide-visible-once-left class="about">
   <div class="about-box">
     <div class="profile-box">
       <img class="profile-image" src="@/assets/foto_small.png">
@@ -24,24 +24,8 @@
 
 <script>
 
-export default {
-  data() {
-    return {
-      isVisible: false,
-    };
-  },
-  created() {
-    // Hören Sie auf das Ereignis "visibility-changed" von mitt
-    this.$mitt.on('visibility-changed', (isVisible) => {
-      this.isVisible = isVisible;
-    });
-  },
-};
-
 const componentName = 'About';
 </script>
 <style>
-.hidden {
-  display: none;
-}
+
 </style>
