@@ -74,6 +74,7 @@
           </details>
         </div>
       </div>
+
     </div>
   </div>
 </template>

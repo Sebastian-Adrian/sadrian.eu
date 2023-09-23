@@ -3,53 +3,48 @@
   </Navigation>
 
   <div>
-      <About :class="{
-        'wayout' : !servicesIsVisible && !skillsetIsVisible,
-        'wayin' : servicesIsVisible || skillsetIsVisible
+    <About :class="{
+        'wayout' : portfolioIsVisible && !skillsetIsVisible,
+        'wayin' : !portfolioIsVisible || skillsetIsVisible
       }">
-      </About>
+    </About>
 
     <div class="content-container">
       <div class="content">
-        <div v-motion-slide-visible-once-left>
-          <div class="info-table-1">
-            <div class="info-table__cell-1">
-              <div class="info-table__headline">
-                <h2>Sebastian Adrian</h2>
-              </div>
-              <p class="info-table__subtitle">Wirtschaftsinformatiker</p>
-              <div class="info-table__content">
-                <p>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
         <Waypoint @change="changeSkillsetState">
-          <Skillset>
-          </Skillset>
+          <section>
+            <Skillset>
+            </Skillset>
+          </section>
         </Waypoint>
         <Waypoint @change="changeServiceState">
-          <Services>
-          </Services>
+          <section>
+            <Services>
+            </Services>
+          </section>
         </Waypoint>
-        <suspense>
-          <GitHub>
-          </GitHub>
-        </suspense>
-        <Contact>
-        </Contact>
+        <Waypoint @change="changePortfolioState">
+          <suspense>
+            <GitHub>
+            </GitHub>
+          </suspense>
+        </Waypoint>
+        <section>
+          <Contact>
+          </Contact>
+        </section>
+
       </div>
     </div>
   </div>
-<!--
-    <div class="footer">
-      <ul>
-        <li><a href="#">Impressum</a></li>
-        <li><a href="#">Datenschutz</a></li>
-        <li><a href="#">^</a></li>
-      </ul>
-    </div>-->
+  <!--
+      <div class="footer">
+        <ul>
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">^</a></li>
+        </ul>
+      </div>-->
 </template>
 <script>
 
@@ -66,7 +61,8 @@ export default {
   data() {
     return {
       servicesIsVisible: false,
-      skillsetIsVisible: true,
+      skillsetIsVisible: false,
+      portfolioIsVisible: false,
     };
   },
   components: {Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
@@ -76,6 +72,9 @@ export default {
     },
     changeSkillsetState (state) {
       this.skillsetIsVisible = state.going === 'IN';
+    },
+    changePortfolioState (state) {
+      this.portfolioIsVisible = state.going === 'IN';
     }
   }
 }
