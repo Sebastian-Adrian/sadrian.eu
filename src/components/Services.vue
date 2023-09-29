@@ -1,7 +1,7 @@
 <template>
     <div v-motion-slide-visible-once-left>
-      <div class="info-table-3">
-        <div class="info-table__cell-3">
+      <div class="service-box">
+        <div class="service-box__cell-3">
           <div class="box-title">
           <span>
             <svg class="icon" height="32" viewBox="0 -960 960 960" width="32"

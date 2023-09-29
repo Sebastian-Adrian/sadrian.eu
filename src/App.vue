@@ -2,41 +2,34 @@
   <Navigation>
   </Navigation>
 
-  <div>
-    <About :class="{
-        'wayout' : portfolioIsVisible && !skillsetIsVisible,
-        'wayin' : !portfolioIsVisible || skillsetIsVisible
-      }">
-    </About>
 
-    <div class="content-container">
-      <div class="content">
-        <Waypoint @change="changeSkillsetState">
-          <section>
-            <Skillset>
-            </Skillset>
-          </section>
-        </Waypoint>
-        <Waypoint @change="changeServiceState">
-          <section>
-            <Services>
-            </Services>
-          </section>
-        </Waypoint>
-        <Waypoint @change="changePortfolioState">
-          <suspense>
-            <GitHub>
-            </GitHub>
-          </suspense>
-        </Waypoint>
-        <section>
-          <Contact>
-          </Contact>
-        </section>
+  <Waypoint @change="changeSkillsetState">
+    <section class="aboutSection">
+      <About>
+      </About>
+    </section>
+  </Waypoint>
+  <Waypoint @change="changeServiceState">
+    <section class="serviceSection">
+      <Services>
+      </Services>
+    </section>
+  </Waypoint>
+  <Waypoint @change="changePortfolioState">
 
-      </div>
-    </div>
-  </div>
+    <section class="aboutSection">
+      <suspense>
+        <GitHub>
+        </GitHub>
+      </suspense>
+    </section>
+  </Waypoint>
+  <section class="serviceSection">
+    <Contact>
+    </Contact>
+  </section>
+
+
   <!--
       <div class="footer">
         <ul>
@@ -67,7 +60,9 @@ export default {
   },
   components: {Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
   methods: {
+    // übergibt die aktuelle Position auf Screen und prüft auf Sichtbarkeit ('IN')
     changeServiceState (state) {
+      console.log(state);
       this.servicesIsVisible = state.going === 'IN';
     },
     changeSkillsetState (state) {
