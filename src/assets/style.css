@@ -123,7 +123,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #252525;
+  background: #020101;
   overflow-x: hidden;
 }
 
@@ -286,33 +286,25 @@ details[open] summary::after span {
   padding: 0;
 }
 
-.github-box {
-  background: url(./meeting_640.jpg);
-  background-size: unset;
-  display: flex;
-  flex-direction: column;
-  width: 40vw;
-  height: auto;
-  text-align: center;
-  color: #f1f1f1;
-  box-shadow: 5px 5px 12px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
-  transition: all 0.5s ease-in-out;
-  margin-top: 8vh;
-  cursor: pointer;
+.github {
+  margin: 0;
+  padding: 0;
   z-index: 1;
-  transform: scale(1);
-}
-.github-box:hover {
-  transform: scale(1.02);
-  z-index: 20;
-  transition: all 0.15s ease-in-out;
 }
 
-.github-box__cell:hover {
-  transform: scale(1.02);
-  z-index: 20;
-  transition: all 0.15s ease-in-out;
+.github-box {
+  display: flex;
+  flex-direction: column;
+  background: rgba(92, 229, 213, 0.27);
+  border: #5CE5D5 1px solid;
+  border-radius: 25px;
+  box-shadow: 5px 5px 20px 5px rgba(92, 229, 213, 0.44);
+  width: 40vw;
+  text-align: center;
+  color: #f1f1f1;
+  cursor: pointer;
+  margin: 1.5rem;
+  z-index: 10000;
 }
 
 .info-table-4__footer {
@@ -344,11 +336,6 @@ details[open] summary::after span {
 
 .contact-box__cell {
   background: rgba(45, 58, 58, 0.9);
-  border-radius: 25px;
-}
-
-.github-box__cell {
-  background: rgba(51, 107, 107, 0.95);
   border-radius: 25px;
 }
 
@@ -630,8 +617,7 @@ section {
   top: 0;
   bottom: 0;
   right: -140px;
-  flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 8vh;
 }
 
@@ -642,6 +628,12 @@ section {
 
 .serviceSection {
   background: #020101;
+}
+
+.githubSection {
+  background: #020101;
+  flex-direction: column;
+  height: 100%;
 }
 
 .about-path {

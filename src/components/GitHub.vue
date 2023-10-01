@@ -1,7 +1,7 @@
 <template>
-    <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once class="github-box" :id="componentName"
-         v-on:click.stop.prevent="openLink(repo.html_url)">
-      <div class="github-box__cell">
+    <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once class="github" :id="componentName"
+         v-on:click.stop.prevent="openLink(repo.html_url)" v-on:mouseover="zoomBox" v-on:mouseleave="zoomBox">
+      <div class="github-box">
         <div class="box-title">
           <span>
             <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>
@@ -64,25 +64,25 @@
         </div>
       </div>
     </div>
-
 </template>
 
 <script setup>
-import emitter from "@/helpers/eventBus";
 import { ref, onMounted } from 'vue';
 import { Octokit } from 'octokit';
 import moment from 'moment';
 import githubConfig from '@/githubConfig.js';
-import { scrollToComponent } from './Navigation.vue';
 
 const componentName = 'GitHub';
 const octokit = new Octokit({ auth: githubConfig.key });
 const repos = ref([]);
+
+// GitHub Datum in richtiges Format setzen
 const formatDate = (date) => {
   if (date) {
     return moment(String(date)).format('YYYY-MM-DD');
   }
 };
+
 const openLink = (link) => {
   window.open(link);
 };
@@ -94,6 +94,23 @@ const getLanguages = (languagesObj) => {
     return 'Unknown'; // Fallback, wenn keine Sprachen vorhanden sind
   }
 };
+
+
+// TODO: Github-Box Zoom
+const zoomBox = (event) => {
+  if (event) {
+    const object = event.target
+    console.log(object.id)
+    if (object.id === 'GitHub') {
+      if (event.type === 'mouseover'){
+        object.style.transform = 'scale(1.05)';
+        object.style.transition = 'transform 0.2s ease'
+      } else if (event.type === 'mouseleave') {
+        object.style.transform = 'scale(1)';
+      }
+    }
+  }
+}
 
 onMounted(async () => {
   try {

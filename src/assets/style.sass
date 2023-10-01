@@ -136,7 +136,7 @@ $--image-3:url(slider-3.jpg?format=webp&quality=40)
 body
   margin: 0
   padding: 0
-  background-color: #252525
+  background: #020101
   //background: linear-gradient(377.21deg, rgba(0, 75, 41, 0.24) 3.65%, rgba(0, 95, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(21, 187, 209, 0.16) 0%, rgba(25, 138, 209, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C
   //background: linear-gradient(50deg, hsl(194, 100%, 20%) 6%, hsl(218, 11%, 40%) 51%, hsla(198, 34%, 47%, 0.51) 67%, hsla(205, 45%, 28%, 0.52) 77%, hsl(54deg 77% 54%) 85%, hsl(55deg 100% 50%) 90%, hsl(49deg 100% 50%) 95%, hsl(43deg 100% 50%) 98%, hsl(35deg 100% 50%) 100%, hsl(25deg 100% 50%) 101%, hsl(0deg 100% 50%) 100%)
   //background-image: linear-gradient(to right top, #002325, #133f44, #2a5d65, #437c89, #5e9db0, #5fa1b5, #5fa6b9, #60aabe, #46929f, #2f7b81, #186465, #004e49)
@@ -283,32 +283,24 @@ details[open] summary::after
   transition: .6s
   padding: 0
 
+.github
+  margin: 0
+  padding: 0
+  z-index: 1
+
 .github-box
-  background: url(./meeting_640.jpg)
-  background-size: unset
   display: flex
   flex-direction: column
+  background: rgba(92, 229, 213, 0.27)
+  border: #5CE5D5 1px solid
+  border-radius: 25px
+  box-shadow: 5px 5px 20px 5px rgba(92, 229, 213, 0.44)
   width: 40vw
-  height: auto
   text-align: center
   color: #f1f1f1
-  box-shadow: 5px 5px 12px 5px rgba(0, 0, 0, 0.5)
-  border-radius: 25px
-  transition: all .5s ease-in-out
-  margin-top: 8vh
   cursor: pointer
-  z-index: 1
-  transform: scale(1)
-
-  &:hover
-    transform: scale(1.02)
-    z-index: 20
-    transition: all .15s ease-in-out
-
-.github-box__cell:hover
-  transform: scale(1.02)
-  z-index: 20
-  transition: all .15s ease-in-out
+  margin: 1.5rem
+  z-index: 10000
 
 .info-table-4__footer
   height: 24px
@@ -336,10 +328,6 @@ details[open] summary::after
 
 .contact-box__cell
   background: rgba(45, 58, 58, 0.9)
-  border-radius: 25px
-
-.github-box__cell
-  background: rgba(51, 107, 107, 0.95)
   border-radius: 25px
 
 .service-box__cell-3
@@ -608,8 +596,7 @@ section
   top: 0
   bottom: 0
   right: -140px
-  flex-direction: column
-  height: 100vh
+  min-height: 100vh
   padding-top: 8vh
 
 .aboutSection
@@ -619,6 +606,11 @@ section
 .serviceSection
   background: #020101
   //background: linear-gradient(327.21deg, rgba(126, 7, 120, 0.24) 3.65%, rgba(178, 2, 197, 0.07) 40.32%), linear-gradient(245.93deg, rgb(182, 100, 153) 0%, rgba(203, 25, 209, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #020101
+
+.githubSection
+  background: #020101
+  flex-direction: column
+  height: 100%
 
 .about-path
   clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%) border-box

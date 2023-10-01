@@ -16,13 +16,12 @@
     </section>
   </Waypoint>
   <Waypoint @change="changePortfolioState">
-
-    <section class="aboutSection">
-      <suspense>
-        <GitHub>
-        </GitHub>
-      </suspense>
-    </section>
+  <section class="githubSection">
+    <suspense>
+      <GitHub>
+      </GitHub>
+    </suspense>
+  </section>
   </Waypoint>
   <section class="serviceSection">
     <Contact>
@@ -62,7 +61,6 @@ export default {
   methods: {
     // übergibt die aktuelle Position auf Screen und prüft auf Sichtbarkeit ('IN')
     changeServiceState (state) {
-      console.log(state);
       this.servicesIsVisible = state.going === 'IN';
     },
     changeSkillsetState (state) {
