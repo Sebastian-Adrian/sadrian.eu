@@ -219,26 +219,6 @@ details[open] summary::after span {
   text-align: left;
 }
 
-.contact-box {
-  background: url(./contact_640.jpg) no-repeat;
-  background-size: contain;
-  display: table;
-  position: relative;
-  width: 40vw;
-  height: auto;
-  text-align: center;
-  color: #f1f1f1;
-  box-shadow: 5px 5px 12px 5px rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
-  transition: 0.6s;
-}
-
-.contact-logo {
-  height: 32px;
-  width: 32px;
-  background: url("contact_mail.svg") no-repeat;
-}
-
 .info-table-1 {
   background: url(./work_640.png) no-repeat;
   background-size: contain;
@@ -271,7 +251,6 @@ details[open] summary::after span {
 
 .service-box {
   /* *background: url(views/img/infoBild.jpg) no-repeat; */
-  background-size: cover;
   display: flex;
   position: relative;
   width: 40vw;
@@ -395,6 +374,18 @@ details[open] summary::after span {
 
 .icon {
   fill: white;
+}
+
+.icon-box {
+  display: flex;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  justify-items: left;
+  margin: 0.8rem;
+}
+.icon-box span {
+  margin-left: 0.3rem;
 }
 
 .nav {

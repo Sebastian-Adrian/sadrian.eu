@@ -2,7 +2,7 @@
     <div v-motion-slide-visible-once-left>
       <div class="service-box">
         <div class="service-box__cell-3">
-          <div class="box-title">
+          <div class="icon-box">
           <span>
             <svg class="icon" height="32" viewBox="0 -960 960 960" width="32"
                  xmlns="http://www.w3.org/2000/svg"><path
