@@ -1,8 +1,8 @@
 <template>
-    <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once class="github" :id="componentName"
-         v-on:click.stop.prevent="openLink(repo.html_url)" v-on:mouseover="zoomBox" v-on:mouseleave="zoomBox">
+    <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once :id="componentName"
+         v-on:click.stop.prevent="openLink(repo.html_url)">
       <div class="github-box">
-        <div class="box-title">
+        <div class="icon-box">
           <span>
             <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>
           </span>
@@ -11,8 +11,8 @@
           </span>
         </div>
         <h2>{{ repo.name }}</h2>
-        <p class="info-table__subtitle">{{ repo.description }}</p>
-        <div class="info-table-4__footer">
+        <p class="box__subtitle">{{ repo.description }}</p>
+        <div class="github-box__footer">
           <div class="info-table-4__footer__status">
             <span>
               <svg class="icon" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg">
@@ -95,23 +95,6 @@ const getLanguages = (languagesObj) => {
   }
 };
 
-
-// TODO: Github-Box Zoom
-const zoomBox = (event) => {
-  if (event) {
-    const object = event.target
-    console.log(object.id)
-    if (object.id === 'GitHub') {
-      if (event.type === 'mouseover'){
-        object.style.transform = 'scale(1.05)';
-        object.style.transition = 'transform 0.2s ease'
-      } else if (event.type === 'mouseleave') {
-        object.style.transform = 'scale(1)';
-      }
-    }
-  }
-}
-
 onMounted(async () => {
   try {
     // Abrufen der Repositories
@@ -144,5 +127,35 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+
+.github-box
+  display: flex
+  flex-direction: column
+  background: rgba(92, 229, 213, 0.27)
+  border: #5CE5D5 1px solid
+  border-radius: 25px
+  box-shadow: 5px 5px 20px 5px rgba(92, 229, 213, 0.44)
+  width: 40vw
+  text-align: center
+  color: #f1f1f1
+  cursor: pointer
+  margin: 1.5rem
+  z-index: 1
+  transition: transform 0.2s ease
+  transform: scale(1)
+  &:hover
+    z-index: 200
+    transform: translateY(-5px) scale(1.03)
+
+.github-box__footer
+  height: 24px
+  width: 100%
+  font-size: .8rem
+  display: flex
+  justify-content: left
+  justify-items: center
+  margin: 0
+  padding-left: 5%
+
 </style>

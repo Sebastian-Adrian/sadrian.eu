@@ -77,4 +77,24 @@
 </template>
 
 <script>
+
 </script>
+
+<style lang="sass" scoped>
+
+.skillset
+  color: #f1f1f1
+  text-align: left
+  min-width: 400px
+  display: table
+  position: relative
+  width: calc(40vw)
+  height: 50%
+  transition: .6s
+  span
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+
+</style>

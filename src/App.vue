@@ -71,39 +71,63 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="sass" scoped>
 
-.wayin {
-  animation: fadein 1s ease 0s 1 normal forwards;
-}
+section
+  justify-content: space-around
+  align-content: center
+  align-items: center
+  display: flex
+  position: relative
+  width: calc(100% - 140px)
+  top: 0
+  bottom: 0
+  right: -140px
+  min-height: 100vh
+  padding-top: 8vh
 
-@keyframes fadein {
-  0% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
+.aboutSection
+  background: #020101
+  flex-direction: row
 
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
+.serviceSection
+  background: #020101
+//background: linear-gradient(327.21deg, rgba(126, 7, 120, 0.24) 3.65%, rgba(178, 2, 197, 0.07) 40.32%), linear-gradient(245.93deg, rgb(182, 100, 153) 0%, rgba(203, 25, 209, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #020101
 
-.wayout {
-  animation: fadeout 1s ease 0s 1 normal forwards;
-}
+.githubSection
+  background: #020101
+  flex-direction: column
+  height: 100%
 
-@keyframes fadeout {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.wayin
+  animation: fadein 1s ease 0s 1 normal forwards
 
-  100% {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-}
+@keyframes fadein
+  0%
+    opacity: 0
+    transform: translateX(-50px)
+
+
+  100%
+    opacity: 1
+    transform: translateX(0)
+
+
+.wayout
+  animation: fadeout 1s ease 0s 1 normal forwards
+
+
+@keyframes fadeout
+  0%
+    opacity: 1
+    transform: translateX(0)
+
+
+  100%
+    opacity: 0
+    transform: translateX(-50px)
+
+
 
 </style>
 

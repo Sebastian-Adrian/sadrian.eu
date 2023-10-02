@@ -31,9 +31,6 @@
     </div>
   </div>
 </template>
-
-
-
 <script>
 
 export default {
@@ -50,5 +47,114 @@ export default {
     }
   },
 };
-
 </script>
+
+<style lang="sass" scoped>
+
+.nav-container
+  display: block
+  position: fixed
+  top: 0
+  left: 0
+  bottom: 0
+  width: 140px
+  z-index: 10000
+
+.nav
+  display: flex
+  flex-direction: column
+  justify-content: center
+  box-sizing: border-box
+  height: 100%
+  width: 140px
+  text-align: center
+  left: 0
+  right: 0
+  line-height: 1
+  z-index: 10000
+  background-color: rgb(64, 64, 64)
+  border-right: .1rem solid #252525
+  box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.3)
+
+.btn
+  line-height: 50px
+  height: 50px
+  text-align: left
+  width: 140px
+  cursor: pointer
+
+.btn-one
+  color: #FFF
+  transition: all 0.3s
+  position: relative
+  span, svg
+    transition: all 0.3s
+  &::before
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: calc(100% - 1px)
+    height: 100%
+    z-index: 0.5
+    opacity: 0
+    transition: all 0.3s
+    border-top-width: 1px
+    border-bottom-width: 1px
+    border-top-style: solid
+    border-bottom-style: solid
+    border-top-color: rgba(255, 255, 255, 0.5)
+    border-bottom-color: rgba(255, 255, 255, 0.5)
+    transform: scale(0.1, 1)
+  &:hover
+    span
+      letter-spacing: 2px
+    svg
+      transform: scale(0.8)
+    &::before
+      opacity: 1
+      transform: scale(1, 1)
+  &::after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 0
+    width: calc(100% - 1px)
+    height: 100%
+    z-index: 1
+    transition: all 0.3s
+    background-color: rgba(255, 255, 255, 0.1)
+    overflow: hidden
+  &:hover::after
+    opacity: 0
+    transform: scale(0.1, 1)
+
+.btn_span
+  display: flex
+  align-items: center
+  justify-content: left
+  span
+    transition: all .3s
+    padding: 5px
+  &:hover
+    svg
+      transform: scale(0.7)
+    &::before
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      width: 100%
+      height: 100%
+      z-index: 1
+      opacity: 0
+      transition: all 0.3s
+      border-top-width: 1px
+      border-bottom-width: 1px
+      border-top-style: solid
+      border-bottom-style: solid
+      border-top-color: rgba(255, 255, 255, 0.5)
+      border-bottom-color: rgba(255, 255, 255, 0.5)
+      transform: scale(0.1, 1)
+
+</style>
