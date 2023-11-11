@@ -1,6 +1,7 @@
 <template>
   <div class="nav-container">
     <div class="nav">
+      <div class="nav-border" ref="nav-border"></div>
       <div class="btn btn-one" @click="scrollToTop">
         <div class="btn_span">
           <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="40">
@@ -8,6 +9,15 @@
                   d="M190.256-224.102q56.975-54.487 130.508-87.013 73.534-32.525 159.167-32.525t159.236 32.525q73.602 32.526 130.577 87.013v-533.333q0-4.616-3.847-8.462-3.846-3.847-8.462-3.847h-554.87q-4.616 0-8.462 3.847-3.847 3.846-3.847 8.462v533.333Zm290.693-205.026q54.025 0 91.538-37.513 37.512-37.512 37.512-91.538 0-54.025-37.512-91.538-37.513-37.512-91.538-37.512-54.026 0-91.538 37.512-37.513 37.513-37.513 91.538 0 54.026 37.513 91.538 37.512 37.513 91.538 37.513ZM202.565-140.001q-25.788 0-44.176-18.388t-18.388-44.176v-554.87q0-25.788 18.388-44.176t44.176-18.388h554.87q25.788 0 44.176 18.388t18.388 44.176v554.87q0 25.788-18.388 44.176t-44.176 18.388h-554.87Zm33.331-50.255h488.465v-8.052q-53.334-47.59-115.341-71.334-62.007-23.744-129.02-23.744-66.539 0-128.591 23.552-62.051 23.552-115.513 70.757v8.821Zm245.181-289.127q-32.821 0-55.872-23.051-23.052-23.052-23.052-55.745 0-32.692 23.052-55.744 23.051-23.051 55.744-23.051 32.692 0 55.744 23.105 23.051 23.105 23.051 55.562 0 32.821-23.105 55.873-23.105 23.051-55.562 23.051ZM480-497.256Z"/>
           </svg>
           <span>Profil</span>
+        </div>
+      </div>
+      <div class="btn btn-one" @click="scrollToComponent('Services')">
+        <div class="btn_span">
+          <svg xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960" width="40">
+            <path class="icon"
+                  d="M190.256-224.102q56.975-54.487 130.508-87.013 73.534-32.525 159.167-32.525t159.236 32.525q73.602 32.526 130.577 87.013v-533.333q0-4.616-3.847-8.462-3.846-3.847-8.462-3.847h-554.87q-4.616 0-8.462 3.847-3.847 3.846-3.847 8.462v533.333Zm290.693-205.026q54.025 0 91.538-37.513 37.512-37.512 37.512-91.538 0-54.025-37.512-91.538-37.513-37.512-91.538-37.512-54.026 0-91.538 37.512-37.513 37.513-37.513 91.538 0 54.026 37.513 91.538 37.512 37.513 91.538 37.513ZM202.565-140.001q-25.788 0-44.176-18.388t-18.388-44.176v-554.87q0-25.788 18.388-44.176t44.176-18.388h554.87q25.788 0 44.176 18.388t18.388 44.176v554.87q0 25.788-18.388 44.176t-44.176 18.388h-554.87Zm33.331-50.255h488.465v-8.052q-53.334-47.59-115.341-71.334-62.007-23.744-129.02-23.744-66.539 0-128.591 23.552-62.051 23.552-115.513 70.757v8.821Zm245.181-289.127q-32.821 0-55.872-23.051-23.052-23.052-23.052-55.745 0-32.692 23.052-55.744 23.051-23.051 55.744-23.051 32.692 0 55.744 23.105 23.051 23.105 23.051 55.562 0 32.821-23.105 55.873-23.105 23.051-55.562 23.051ZM480-497.256Z"/>
+          </svg>
+          <span>Services</span>
         </div>
       </div>
       <div class="btn btn-one" @click="scrollToComponent('GitHub')">
@@ -34,6 +44,9 @@
 <script>
 
 export default {
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
   methods: {
     scrollToComponent(componentName) {
       const componentElement = document.getElementById(componentName);
@@ -44,7 +57,68 @@ export default {
     },
     scrollToTop() {
       window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    },
+    handleScroll() {
+      const navbar = this.$refs["nav-border"];
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      // Berechne den Prozentsatz der Scrollhöhe
+      const scrollPercentage = (scrollPosition / (fullHeight - windowHeight)) * 100;
+
+      if (scrollPercentage < 5) {
+        navbar.style.height = "0%"
+        navbar.style.background = "#fff200"
+        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
+      } else if (scrollPercentage > 5 && scrollPercentage < 10) {
+        navbar.style.height = "5%";
+        navbar.style.background = "#fff200"
+        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
+      } else if (scrollPercentage > 10 && scrollPercentage < 20) {
+        navbar.style.height = "10%";
+        navbar.style.background = "#fff200"
+        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
+      } else if (scrollPercentage > 20 && scrollPercentage < 30) {
+        navbar.style.height = "20%";
+        navbar.style.background = "#9e4c8e"
+        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
+      } else if (scrollPercentage > 30 && scrollPercentage < 40) {
+        navbar.style.height = "30%";
+        navbar.style.background = "#9e4c8e"
+        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
+      } else if (scrollPercentage > 40 && scrollPercentage < 50) {
+        navbar.style.height = "40%";
+        navbar.style.background = "#9e4c8e"
+        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
+      } else if (scrollPercentage > 50 && scrollPercentage < 60) {
+        navbar.style.height = "50%";
+        navbar.style.background = "#5CE5D5"
+        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
+      } else if (scrollPercentage > 60 && scrollPercentage < 70) {
+        navbar.style.height = "60%";
+        navbar.style.background = "#5CE5D5"
+        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
+      } else if (scrollPercentage > 70 && scrollPercentage < 80) {
+        navbar.style.height = "70%";
+        navbar.style.background = "#5CE5D5"
+        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
+      } else if (scrollPercentage > 80 && scrollPercentage < 90) {
+        navbar.style.height = "80%";
+        navbar.style.background = "#5CE5D5"
+        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
+      } else if (scrollPercentage > 90 && scrollPercentage < 99) {
+        navbar.style.height = "90%";
+        navbar.style.background = "#7898FB"
+        navbar.style.boxShadow = "4px 0 15px 2px #7898FB"
+      } else if (scrollPercentage > 99) {
+        navbar.style.height = "100%";
+        navbar.style.background = "#7898FB"
+        navbar.style.boxShadow = "4px 0 15px 2px #7898FB"
+      }
+    },
+
+
   },
 };
 </script>
@@ -73,8 +147,26 @@ export default {
   line-height: 1
   z-index: 10000
   background-color: rgb(64, 64, 64)
-  border-right: .1rem solid #252525
+  border-right: .1rem solid rgba(255, 255, 255, 0.32)
   box-shadow: 2px 2px 10px 5px rgba(0, 0, 0, 0.3)
+
+.nav-border
+  background-color: #fff200
+  width: 1px
+  margin-left: auto
+  margin-right: auto
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  box-shadow: 4px 0 15px 2px #fff200
+  height: 0%
+  -webkit-transition: all
+  -moz-transition: all
+  -ms-transition: all
+  -o-transition: all
+  transition: all 1s ease
+
 
 .btn
   line-height: 50px
@@ -103,9 +195,9 @@ export default {
     border-bottom-width: 1px
     border-top-style: solid
     border-bottom-style: solid
-    border-top-color: rgba(255, 255, 255, 0.5)
-    border-bottom-color: rgba(255, 255, 255, 0.5)
     transform: scale(0.1, 1)
+    border-top-color: #a95198
+    border-bottom-color: #a95198
   &:hover
     span
       letter-spacing: 2px
@@ -128,6 +220,7 @@ export default {
   &:hover::after
     opacity: 0
     transform: scale(0.1, 1)
+
 
 .btn_span
   display: flex

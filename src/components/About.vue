@@ -44,8 +44,6 @@ $--image-2:url(../assets/slider-2.jpg?format=webp&quality=40)
 $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
 
 .about-path
-  clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%) border-box
-  background: linear-gradient(327.21deg, rgba(7, 126, 107, 0.24) 3.65%, rgba(2, 197, 173, 0.07) 40.32%), linear-gradient(245.93deg, rgb(6, 149, 147) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #212b30
   display: flex
   flex-direction: row
   align-items: center
@@ -58,7 +56,7 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   position: absolute
 
 .about
-  color: #f1f1f1
+  color: #fff200
   left: 0
   text-align: left
   max-width: calc(35vw - 80px)
@@ -66,6 +64,8 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   display: block
   position: relative
   transition: .6s
+  h1,h2
+    text-shadow: 1px 0 10px #fff200
 
 .container
   display: flex
@@ -74,14 +74,14 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   justify-items: center
   width: 90%
   max-width: 35rem
-  gap: 0.5rem
+  gap: 1rem
   z-index: 10000
   .column
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
-    gap: 0.5rem
+    gap: 1rem
     width: 100%
   .column-1
     .item-1
@@ -120,6 +120,8 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   .column .item
     width: inherit
     border-radius: 0.5rem
+    border: .1rem solid #fff200
+    box-shadow: 1px 0 10px 0 #fff200
     background-position: center center
     background-attachment: fixed
     background-repeat: no-repeat

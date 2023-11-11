@@ -1,5 +1,5 @@
 <template>
-    <div v-motion-slide-visible-once-left>
+    <div v-motion-slide-visible-once-left :id="componentName">
       <div class="service-box">
         <div class="service-box__cell-3">
           <div class="icon-box">
@@ -66,10 +66,8 @@
       </div>
     </div>
 </template>
-<script>
-export default {
-  name: "Services",
-};
+<script setup>
+const componentName = 'Services'
 </script>
 <style lang="sass" scoped>
 

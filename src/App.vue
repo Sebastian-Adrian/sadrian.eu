@@ -87,15 +87,14 @@ section
   padding-top: 8vh
 
 .aboutSection
-  background: #020101
+  background: #020101 url(assets/noise.svg)
   flex-direction: row
 
 .serviceSection
-  background: #020101
-//background: linear-gradient(327.21deg, rgba(126, 7, 120, 0.24) 3.65%, rgba(178, 2, 197, 0.07) 40.32%), linear-gradient(245.93deg, rgb(182, 100, 153) 0%, rgba(203, 25, 209, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #020101
+  background: #020101 url(assets/noise.svg)
 
 .githubSection
-  background: #020101
+  background: #020101 url(assets/noise.svg)
   flex-direction: column
   height: 100%
 
