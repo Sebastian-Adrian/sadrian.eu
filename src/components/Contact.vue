@@ -114,11 +114,13 @@ input
 
 .invalidMailInput:focus
   border-color: red
+  box-shadow: 5px 5px 20px 5px rgba(220, 77, 77, 0.65)
 
 
 input:focus
   background-color: #E6E6E1
-  border-color: #6C9959
+  border-color: #7898FB
+  box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
   outline: none
 
 
@@ -137,7 +139,8 @@ textarea
 
 textarea:focus
   background-color: #E6E6E1
-  border-color: #6C9959
+  border-color: #7898FB
+  box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
   outline: none
 
 

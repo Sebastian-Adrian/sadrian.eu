@@ -8,9 +8,7 @@
       Seit nunmehr 8 Jahren beschäftige ich mich mit der Entwicklung von JAVA- und WEB Applikationen.
     </p>
     <p>
-      (...) Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda consectetur dicta dolore
-      dolorem doloremque earum est, et exercitationem explicabo impedit libero numquam porro possimus qui
-      quidem suscipit velit, veniam voluptatibus. (...)
+
     </p>
   </div>
   <div class="container">
@@ -67,6 +65,9 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   h1,h2
     text-shadow: 1px 0 10px #fff200
 
+
+/*  Slider based on Code by Johannes Schiel / Unleashed Design
+/*  https://codepen.io/Unleashed-Design/pen/zYMxyNx
 .container
   display: flex
   flex-direction: row

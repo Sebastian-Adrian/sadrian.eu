@@ -12,26 +12,26 @@
       </Skillset>
     </section>
   </Waypoint>
-  <Waypoint @change="changeServiceState">
-    <section class="serviceSection">
+  <section class="serviceSection">
+    <Waypoint @change="changeServiceState">
       <Services>
       </Services>
-    </section>
-  </Waypoint>
-  <Waypoint @change="changePortfolioState">
-    <section class="githubSection">
-      <suspense>
-        <GitHub>
-        </GitHub>
-      </suspense>
-    </section>
-  </Waypoint>
-  <waypoint @change="changeContactState">
-    <section class="serviceSection">
+    </Waypoint>
+  </section>
+  <section class="githubSection">
+    <Waypoint @change="changePortfolioState">
+    <suspense>
+      <GitHub>
+      </GitHub>
+    </suspense>
+    </Waypoint>
+  </section>
+  <section class="serviceSection">
+    <waypoint @change="changeContactState">
       <Contact>
       </Contact>
-    </section>
-  </waypoint>
+    </waypoint>
+  </section>
 
   <!--
       <div class="footer">
@@ -93,7 +93,7 @@ section
   bottom: 0
   right: -140px
   min-height: 100vh
-  padding-top: 4vh
+  padding-top: 8vh
 
 .aboutSection
   background: #020101 url(assets/noise.svg)
