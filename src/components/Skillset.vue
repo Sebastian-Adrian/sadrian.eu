@@ -1,7 +1,8 @@
 <template>
   <div v-motion-slide-visible-once-right>
     <div class="skillset">
-        <div class="box-title">
+      <div class="skillset__cell">
+        <div class="icon-box">
           <span>
             <svg class="icon" xmlns="http://www.w3.org/2000/svg" height="32" viewBox="0 -960 960 960"
                  width="32"><path
@@ -58,20 +59,11 @@
                 <td>(..))</td>
                 <td>Unix</td>
               </tr>
-              <tr>
-                <td>C++</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>United Launch Alliance</td>
-                <td>CCDev1,CCDev2</td>
-                <td>$6.7 million</td>
-              </tr>
               </tbody>
             </table>
           </details>
         </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,18 +75,75 @@
 <style lang="sass" scoped>
 
 .skillset
-  color: #f1f1f1
-  text-align: left
-  min-width: 400px
-  display: table
+  display: flex
   position: relative
-  width: calc(40vw)
-  height: 50%
+  width: 40vw
+  height: auto
+  text-align: center
+  align-items: center
+  color: #f1f1f1
+  background: rgba(255, 242, 0, 0.27)
+  box-shadow: 5px 5px 20px 5px rgba(255, 242, 0, 0.27)
+  border-radius: 25px
+  border: #fff200 1px solid
   transition: .6s
+  padding: 0
   span
     display: flex
     flex-direction: column
     align-items: flex-start
 
+.skillset__cell
+  background: none
+  display: table-cell
+  width: 100%
+  border-radius: 25px
+
+table
+  text-align: left
+  font-size: .9em
+  border-spacing: 10px
+
+td
+  text-align: left
+  font-size: .9em
+  border-spacing: 10px
+  background-color: rgba(255, 242, 0, 0.38)
+  border-top: 1px solid
+  border-bottom: 1px solid
+  border-radius: 15px
+  border-color: #fff200
+  padding: 10px
+  margin: 0
+
+tbody, p, a
+  color: #ffffff
+
+thead
+  font-weight: 800
+  span
+    align-items: center
+    vertical-align: center
+    text-align: left
+    margin: 0
+    padding: 0
+    display: inline-flex
+    font-size: .9rem
+
+details summary
+  cursor: pointer
+
+  > *
+    display: inline
+
+details[open] summary::after
+  content: "ausblenden"
+
+  span
+    display: inline-flex
+    margin-right: 5px
+    padding: 0
+    align-items: center
+    text-align: left
 
 </style>

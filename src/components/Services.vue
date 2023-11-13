@@ -86,9 +86,40 @@ const componentName = 'Services'
   padding: 0
 
 .service-box__cell-3
-  background: #351d2d
+  background: rgba(161, 27, 146, 0.27)
   display: table-cell
   width: 100%
   border-radius: 25px
+
+table
+  text-align: left
+  font-size: .9em
+  border-spacing: 10px
+
+td
+  text-align: left
+  font-size: .9em
+  border-spacing: 10px
+  background-color: #5b355e
+  border-top: 1px solid
+  border-bottom: 1px solid
+  border-radius: 15px
+  border-color: #9e4c8e
+  padding: 10px
+  margin: 0
+
+tbody, p, a
+  color: #dedede
+
+thead
+  font-weight: 800
+  span
+    align-items: center
+    vertical-align: center
+    text-align: left
+    margin: 0
+    padding: 0
+    display: inline-flex
+    font-size: .9rem
 
 </style>

@@ -10,42 +10,6 @@ body {
   overflow-x: hidden;
 }
 
-table {
-  text-align: left;
-  font-size: 0.9em;
-  border-spacing: 10px;
-}
-
-td {
-  text-align: left;
-  font-size: 0.9em;
-  border-spacing: 10px;
-  background-color: #5b355e;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-radius: 25px;
-  border-color: #9e4c8e;
-  padding: 10px;
-  margin: 0;
-}
-
-tbody, p, a {
-  color: #dedede;
-}
-
-thead {
-  font-weight: 800;
-}
-thead span {
-  align-items: center;
-  vertical-align: center;
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  font-size: 0.9rem;
-}
-
 h1 {
   font-weight: 600;
   font-size: 1.8rem;
@@ -65,41 +29,11 @@ h3 {
 
 p {
   font-size: 0.9em;
+  color: white;
 }
 
 a {
   font-size: 0.8em;
-}
-
-details summary {
-  cursor: pointer;
-}
-details summary > * {
-  display: inline;
-}
-
-summary {
-  position: static;
-}
-summary::marker {
-  color: transparent;
-}
-summary::after {
-  content: "mehr anzeigen";
-  font-weight: bold;
-  transition: all 0.5s;
-  text-align: left;
-}
-
-details[open] summary::after {
-  content: "ausblenden";
-}
-details[open] summary::after span {
-  display: inline-flex;
-  margin-right: 5px;
-  padding: 0;
-  align-items: center;
-  text-align: left;
 }
 
 .info-table-4__footer__status span {

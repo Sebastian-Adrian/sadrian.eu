@@ -44,8 +44,41 @@
 <script>
 
 export default {
+
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
+  },
+  props: {
+    servicesIsVisible: {
+      type: Boolean,
+      default: false,
+    },
+    skillsetIsVisible: {
+      type: Boolean,
+      default: false,
+    },
+    portfolioIsVisible: {
+      type: Boolean,
+      default: false,
+    },
+    contactIsVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    servicesIsVisible(newValue) {
+      if (newValue) {
+        const navbar = this.$refs["nav-border"];
+        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
+      }
+    },
+    skillsetIsVisible(newValue) {
+      // Führe Aktionen basierend auf der Sichtbarkeit des Skillsets aus
+    },
+    portfolioIsVisible(newValue) {
+      // Führe Aktionen basierend auf der Sichtbarkeit des Portfolios aus
+    },
   },
   methods: {
     scrollToComponent(componentName) {
@@ -66,59 +99,26 @@ export default {
 
       // Berechne den Prozentsatz der Scrollhöhe
       const scrollPercentage = (scrollPosition / (fullHeight - windowHeight)) * 100;
+      const setNavbarStyle = (height, background, boxShadow) => {
+        navbar.style.height = height;
+        navbar.style.background = background;
+        navbar.style.boxShadow = boxShadow;
+      };
+
+      const height = `${scrollPercentage}%`;
 
       if (scrollPercentage < 5) {
-        navbar.style.height = "0%"
-        navbar.style.background = "#fff200"
-        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
-      } else if (scrollPercentage > 5 && scrollPercentage < 10) {
-        navbar.style.height = "5%";
-        navbar.style.background = "#fff200"
-        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
-      } else if (scrollPercentage > 10 && scrollPercentage < 20) {
-        navbar.style.height = "10%";
-        navbar.style.background = "#fff200"
-        navbar.style.boxShadow = "4px 0 15px 2px #fff200"
-      } else if (scrollPercentage > 20 && scrollPercentage < 30) {
-        navbar.style.height = "20%";
-        navbar.style.background = "#9e4c8e"
-        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
-      } else if (scrollPercentage > 30 && scrollPercentage < 40) {
-        navbar.style.height = "30%";
-        navbar.style.background = "#9e4c8e"
-        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
-      } else if (scrollPercentage > 40 && scrollPercentage < 50) {
-        navbar.style.height = "40%";
-        navbar.style.background = "#9e4c8e"
-        navbar.style.boxShadow = "4px 0 15px 2px #9e4c8e"
-      } else if (scrollPercentage > 50 && scrollPercentage < 60) {
-        navbar.style.height = "50%";
-        navbar.style.background = "#5CE5D5"
-        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
-      } else if (scrollPercentage > 60 && scrollPercentage < 70) {
-        navbar.style.height = "60%";
-        navbar.style.background = "#5CE5D5"
-        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
-      } else if (scrollPercentage > 70 && scrollPercentage < 80) {
-        navbar.style.height = "70%";
-        navbar.style.background = "#5CE5D5"
-        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
-      } else if (scrollPercentage > 80 && scrollPercentage < 90) {
-        navbar.style.height = "80%";
-        navbar.style.background = "#5CE5D5"
-        navbar.style.boxShadow = "4px 0 15px 2px #5CE5D5"
-      } else if (scrollPercentage > 90 && scrollPercentage < 99) {
-        navbar.style.height = "90%";
-        navbar.style.background = "#7898FB"
-        navbar.style.boxShadow = "4px 0 15px 2px #7898FB"
-      } else if (scrollPercentage > 99) {
-        navbar.style.height = "100%";
-        navbar.style.background = "#7898FB"
-        navbar.style.boxShadow = "4px 0 15px 2px #7898FB"
+        setNavbarStyle(height, "#fff200", "4px 0 15px 2px #fff200");
+      } else if (scrollPercentage < 35) {
+        setNavbarStyle(height, "#fff200", "4px 0 15px 2px #fff200");
+      } else if (scrollPercentage < 50) {
+        setNavbarStyle(height, "#9e4c8e", "4px 0 15px 2px #9e4c8e");
+      } else if (scrollPercentage < 80) {
+        setNavbarStyle(height, "#5CE5D5", "4px 0 15px 2px #5CE5D5");
+      } else {
+        setNavbarStyle(height, "#7898FB", "4px 0 15px 2px #7898FB");
       }
     },
-
-
   },
 };
 </script>

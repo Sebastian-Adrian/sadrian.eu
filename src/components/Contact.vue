@@ -68,85 +68,85 @@ const sendEmail = async () => {
 };
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
 
-.contact-box {
-  display: block;
-  position: relative;
-  width: 40vw;
-  height: auto;
-  text-align: center;
-  align-items: center;
-  color: #f1f1f1;
-  background: rgba(101, 128, 212, 0.27);
-  box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45);
-  border-radius: 25px;
-  border: #7898FB 1px solid;
-  transition: 0.6s;
-  padding: 0;
-}
+.contact-box
+  display: block
+  position: relative
+  width: 40vw
+  height: auto
+  text-align: center
+  align-items: center
+  color: #f1f1f1
+  background: rgba(101, 128, 212, 0.27)
+  box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
+  border-radius: 25px
+  border: #7898FB 1px solid
+  transition: 0.6s
+  padding: 0
 
-form {
-  margin: 0.8rem auto;
-  max-width: 420px;
-  padding: 20px;
-  text-align: left;
-}
 
-label {
-  display: inline-block;
-  font-size: 0.85rem;
-  margin: 15px 0 5px;
-}
+form
+  margin: 0.8rem auto
+  max-width: 420px
+  padding: 20px
+  text-align: left
 
-input {
-  background-color: #fffffa;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: block;
-  padding: 5px 6px;
-  width: 100%;
-}
 
-.invalidMailInput {
-  border-color: red;
-}
+label
+  display: inline-block
+  font-size: 0.85rem
+  margin: 15px 0 5px
 
-.invalidMailInput:focus {
-  border-color: red;
-}
 
-input:focus {
-  background-color: #E6E6E1;
-  border-color: #6C9959;
-  outline: none;
-}
+input
+  background-color: #fffffa
+  border-radius: 5px
+  box-sizing: border-box
+  display: block
+  padding: 5px 6px
+  width: 100%
 
-.submit {
-  margin: 0.8rem;
-}
 
-textarea {
-  background-color: #fffffa;
-  border-radius: 5px;
-  box-sizing: border-box;
-  display: block;
-  padding: 5px 6px;
-  width: 100%;
-}
+.invalidMailInput
+  border-color: red
 
-textarea:focus {
-  background-color: #E6E6E1;
-  border-color: #6C9959;
-  outline: none;
-}
 
-.invalidMailLabel {
-  color: #d00000;
-  font-size: 0.85rem;
-  font-style: italic;
-  font-weight: bold;
-  margin-left: 10px;
-  text-align: center;
-}
+.invalidMailInput:focus
+  border-color: red
+
+
+input:focus
+  background-color: #E6E6E1
+  border-color: #6C9959
+  outline: none
+
+
+.submit
+  margin: 0.8rem
+
+
+textarea
+  background-color: #fffffa
+  border-radius: 5px
+  box-sizing: border-box
+  display: block
+  padding: 5px 6px
+  width: 100%
+
+
+textarea:focus
+  background-color: #E6E6E1
+  border-color: #6C9959
+  outline: none
+
+
+.invalidMailLabel
+  color: #d00000
+  font-size: 0.85rem
+  font-style: italic
+  font-weight: bold
+  margin-left: 10px
+  text-align: center
+
 </style>

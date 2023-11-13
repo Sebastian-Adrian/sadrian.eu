@@ -1,12 +1,15 @@
 <template>
-  <Navigation>
+  <Navigation :skillsetIsVisible="skillsetIsVisible" :servicesIsVisible="servicesIsVisible"
+              :portfolioIsVisible="portfolioIsVisible" :contactIsVisible="contactIsVisible">
   </Navigation>
-
-
   <Waypoint @change="changeSkillsetState">
     <section class="aboutSection">
       <About>
       </About>
+    </section>
+    <section class="aboutSection">
+      <Skillset>
+      </Skillset>
     </section>
   </Waypoint>
   <Waypoint @change="changeServiceState">
@@ -16,17 +19,19 @@
     </section>
   </Waypoint>
   <Waypoint @change="changePortfolioState">
-  <section class="githubSection">
-    <suspense>
-      <GitHub>
-      </GitHub>
-    </suspense>
-  </section>
+    <section class="githubSection">
+      <suspense>
+        <GitHub>
+        </GitHub>
+      </suspense>
+    </section>
   </Waypoint>
-  <section class="serviceSection">
-    <Contact>
-    </Contact>
-  </section>
+  <waypoint @change="changeContactState">
+    <section class="serviceSection">
+      <Contact>
+      </Contact>
+    </section>
+  </waypoint>
 
   <!--
       <div class="footer">
@@ -54,6 +59,7 @@ export default {
       servicesIsVisible: false,
       skillsetIsVisible: false,
       portfolioIsVisible: false,
+      contactIsVisible: false,
     };
   },
   components: {Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
@@ -67,7 +73,10 @@ export default {
     },
     changePortfolioState (state) {
       this.portfolioIsVisible = state.going === 'IN';
-    }
+    },
+    changeContactState(state) {
+      this.contactIsVisible = state.going === 'IN';
+    },
   }
 }
 </script>
@@ -84,7 +93,7 @@ section
   bottom: 0
   right: -140px
   min-height: 100vh
-  padding-top: 8vh
+  padding-top: 4vh
 
 .aboutSection
   background: #020101 url(assets/noise.svg)
