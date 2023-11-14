@@ -122,4 +122,14 @@ thead
     display: inline-flex
     font-size: .9rem
 
+@media only screen and (max-width: 1024px)
+
+  .service-box
+    width: 60vw
+
+  table
+    font-size: .7em
+    border-spacing: 7px
+
+
 </style>

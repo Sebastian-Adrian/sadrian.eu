@@ -1,5 +1,5 @@
 <template>
-  <div v-motion-slide-visible-once-right>
+  <div v-motion-slide-visible-once-right :id="componentName">
     <div class="skillset">
       <div class="skillset__cell">
         <div class="icon-box">
@@ -68,8 +68,8 @@
   </div>
 </template>
 
-<script>
-
+<script setup>
+const componentName = 'Skillset'
 </script>
 
 <style lang="sass" scoped>
@@ -145,5 +145,11 @@ details[open] summary::after
     padding: 0
     align-items: center
     text-align: left
+
+@media only screen and (max-width: 1024px)
+
+  .skillset
+    width: 60vw
+
 
 </style>

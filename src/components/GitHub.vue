@@ -158,4 +158,9 @@ onMounted(async () => {
   margin: 0
   padding-left: 5%
 
+@media only screen and (max-width: 1024px)
+
+  .github-box
+    width: 60vw
+
 </style>

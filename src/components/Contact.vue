@@ -152,4 +152,9 @@ textarea:focus
   margin-left: 10px
   text-align: center
 
+@media only screen and (max-width: 1024px)
+
+  .contact-box
+    width: 60vw
+
 </style>

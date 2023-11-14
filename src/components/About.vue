@@ -1,35 +1,37 @@
 <template>
   <div class="about-path">
-  <div v-motion-slide-visible-once-left class="about">
-    <h1>Hi, ich bin Sebastian.</h1>
-    <h2>Wirtschaftsinformatiker und Entwickler</h2>
-    <p>
-      Mein halbes Leben gehört die Informatik zu einem großen Teil meiner persönlichen Leidenschaften.
-      Seit nunmehr 8 Jahren beschäftige ich mich mit der Entwicklung von JAVA- und WEB Applikationen.
-    </p>
-    <p>
-
-    </p>
+    <div  v-motion
+      :initial="{ opacity: 0, x: -100 }"
+      :enter="{ opacity: 1, x: 0, scale: 1 }"
+      :variants="{ custom: { scale: 2 } }"
+      :delay="200" class="about">
+      <h1>Hi, ich bin Sebastian.</h1>
+      <h2>Wirtschaftsinformatiker und Entwickler</h2>
+      <p>
+        Mein halbes Leben gehört die Informatik zu einem großen Teil meiner persönlichen Leidenschaften.
+        Seit nunmehr 8 Jahren beschäftige ich mich mit der Entwicklung von JAVA- und WEB-Applikationen.
+      </p>
+      <p>
+      </p>
+    </div>
+    <div class="container">
+      <div class="column column-1">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+      </div>
+      <div class="column column-2">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+      </div>
+      <div class="column column-3">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+      </div>
+    </div>
   </div>
-  <div class="container">
-    <div class="column column-1">
-      <div class="item item-1"></div>
-      <div class="item item-2"></div>
-      <div class="item item-3"></div>
-    </div>
-    <div class="column column-2">
-      <div class="item item-1"></div>
-      <div class="item item-2"></div>
-      <div class="item item-3"></div>
-    </div>
-
-    <div class="column column-3">
-      <div class="item item-1"></div>
-      <div class="item item-2"></div>
-      <div class="item item-3"></div>
-    </div>
-  </div>
-</div>
 </template>
 <script>
 
@@ -37,15 +39,15 @@ const componentName = 'About';
 </script>
 <style lang="sass" scoped>
 
-$--image-1:url(../assets/slider-1.jpg?format=webp&quality=40)
-$--image-2:url(../assets/slider-2.jpg?format=webp&quality=40)
-$--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
+$--image-1:url(../assets/slider-1.jpg?format=webp&quality=60)
+$--image-2:url(../assets/slider-2.jpg?format=webp&quality=60)
+$--image-3:url(../assets/slider-3.jpg?format=webp&quality=60)
 
 .about-path
   display: flex
   flex-direction: row
   align-items: center
-  justify-content: space-around
+  justify-content: space-evenly
   width: 100%
   height: 100%
   top: 0
@@ -63,8 +65,7 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   position: relative
   transition: .6s
   h1,h2
-    text-shadow: 1px 0 10px #fff200
-
+    text-shadow: 1px 0 5px #fff200
 
 /*  Slider based on Code by Johannes Schiel / Unleashed Design
 /*  https://codepen.io/Unleashed-Design/pen/zYMxyNx
@@ -123,10 +124,10 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
     border-radius: 0.5rem
     border: .1rem solid #fff200
     box-shadow: 1px 0 10px 0 #fff200
-    background-position: center center
+    background-position: right
     background-attachment: fixed
-    background-repeat: no-repeat
-    background-size: cover
+    background-repeat: round
+    background-size: contain
 
 @keyframes background
   0%
@@ -180,5 +181,10 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=40)
   100%
     background-image: $--image-1
     filter: blur(2px)
+
+@media only screen and (max-width: 1024px)
+
+  .about-path
+    flex-direction: column-reverse
 
 </style>
