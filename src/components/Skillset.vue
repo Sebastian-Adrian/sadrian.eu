@@ -146,10 +146,15 @@ details[open] summary::after
     align-items: center
     text-align: left
 
-@media only screen and (max-width: 1024px)
+@media only screen and (min-width: 600px) and (max-width: 780px)
 
   .skillset
     width: 60vw
+
+@media only screen and (max-width: 599px)
+
+  .skillset
+    width: 85vw
 
 
 </style>

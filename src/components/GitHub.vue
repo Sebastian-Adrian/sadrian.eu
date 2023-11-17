@@ -158,9 +158,35 @@ onMounted(async () => {
   margin: 0
   padding-left: 5%
 
-@media only screen and (max-width: 1024px)
+@media only screen and (min-width: 600px) and (max-width: 780px)
 
   .github-box
     width: 60vw
+
+
+@media only screen and (max-width: 599px)
+
+  .github-box
+    width: 85vw
+    h2
+      margin: 10px
+      font-size: 1.3rem
+
+
+  .github-box__footer
+    height: auto
+    width: 100%
+    font-size: .7rem
+    justify-content: left
+    justify-items: center
+    align-content: start
+    align-items: start
+    margin-top: 10px
+    padding-left: 5%
+
+  .box__subtitle
+    color: white
+    font-size: .9em
+    margin: 5px
 
 </style>

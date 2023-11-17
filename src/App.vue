@@ -88,10 +88,9 @@ section
   align-items: center
   display: flex
   position: relative
-  width: calc(100% - 140px)
+  width: calc(100%)
   top: 0
   bottom: 0
-  right: -140px
   min-height: 100vh
   padding-top: 8vh
 
@@ -136,6 +135,21 @@ section
     transform: translateX(-50px)
 
 
+@media only screen and (min-width: 600px) and (max-width: 780px)
+
+  section
+    width: 100%
+    right: 0
+    min-height: 100vh
+    padding-top: 0
+
+@media only screen and (max-width: 599px)
+
+  section
+    width: 100%
+    right: 0
+    min-height: 100vh
+    padding-top: 0
 
 </style>
 

@@ -12,7 +12,11 @@
       </div>
       <form>
         <label>Name</label>
-        <input v-model="contact_name" required type="text">
+        <input
+            v-model="contact_name"
+            required type="text"
+            inputmode="text"
+            autocomplete="name"/>
         <label>E-Mail</label>
         <span v-if="email">
           <label v-if="!validEmail" class="invalidMailLabel">Ungültige Email</label>
@@ -84,6 +88,7 @@ const sendEmail = async () => {
   border: #7898FB 1px solid
   transition: 0.6s
   padding: 0
+  z-index: 10
 
 
 form
@@ -91,12 +96,14 @@ form
   max-width: 420px
   padding: 20px
   text-align: left
+    z-index: 10
 
 
 label
   display: inline-block
   font-size: 0.85rem
   margin: 15px 0 5px
+  z-index: 10
 
 
 input
@@ -106,6 +113,7 @@ input
   display: block
   padding: 5px 6px
   width: 100%
+  z-index: 10
 
 
 .invalidMailInput
@@ -135,6 +143,7 @@ textarea
   display: block
   padding: 5px 6px
   width: 100%
+  resize: none
 
 
 textarea:focus
@@ -156,5 +165,15 @@ textarea:focus
 
   .contact-box
     width: 60vw
+
+@media only screen and (max-width: 780px)
+
+  .contact-box
+    width: 75vw
+
+@media only screen and (max-width: 400px)
+
+  .contact-box
+    width: 85vw
 
 </style>

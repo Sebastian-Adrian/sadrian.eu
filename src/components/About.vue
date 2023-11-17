@@ -66,6 +66,7 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=60)
   transition: .6s
   h1,h2
     text-shadow: 1px 0 5px #fff200
+    padding-bottom: 8px
 
 /*  Slider based on Code by Johannes Schiel / Unleashed Design
 /*  https://codepen.io/Unleashed-Design/pen/zYMxyNx
@@ -77,7 +78,7 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=60)
   width: 90%
   max-width: 35rem
   gap: 1rem
-  z-index: 10000
+  z-index: 9999
   .column
     display: flex
     flex-direction: column
@@ -126,7 +127,7 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=60)
     box-shadow: 1px 0 10px 0 #fff200
     background-position: right
     background-attachment: fixed
-    background-repeat: round
+    background-repeat: no-repeat
     background-size: contain
 
 @keyframes background
@@ -182,9 +183,21 @@ $--image-3:url(../assets/slider-3.jpg?format=webp&quality=60)
     background-image: $--image-1
     filter: blur(2px)
 
-@media only screen and (max-width: 1024px)
+@media only screen and (min-width: 600px) and (max-width: 780px)
 
   .about-path
     flex-direction: column-reverse
+
+@media only screen and (max-width: 599px)
+
+  .about-path
+    flex-direction: column
+
+  .about
+    max-width: 100vw
+    min-width: unset
+    padding: 1rem
+    h1,h2
+      text-shadow: 1px 0 5px #fff200
 
 </style>
