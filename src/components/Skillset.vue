@@ -87,14 +87,12 @@ const componentName = 'Skillset'
   border-radius: 25px
   border: #fff200 1px solid
   transition: .6s
-  padding: 0
   span
     display: flex
     flex-direction: column
     align-items: flex-start
 
 .skillset__cell
-  background: none
   display: table-cell
   width: 100%
   border-radius: 25px
@@ -103,32 +101,27 @@ table
   text-align: left
   font-size: .9em
   border-spacing: 10px
+  width: 100%
+  padding-right: 0.8rem
+  td
+    width: 30%
+    text-align: left
+    font-size: .9em
+    border-spacing: 10px
+    background-color: rgba(255, 242, 0, 0.38)
+    border-top: 1px solid
+    border-bottom: 1px solid
+    border-radius: 15px
+    border-color: #fff200
+    padding: 10px
+    margin: 0
 
-td
-  text-align: left
-  font-size: .9em
-  border-spacing: 10px
-  background-color: rgba(255, 242, 0, 0.38)
-  border-top: 1px solid
-  border-bottom: 1px solid
-  border-radius: 15px
-  border-color: #fff200
-  padding: 10px
-  margin: 0
 
 tbody, p, a
   color: #ffffff
 
 thead
   font-weight: 800
-  span
-    align-items: center
-    vertical-align: center
-    text-align: left
-    margin: 0
-    padding: 0
-    display: inline-flex
-    font-size: .9rem
 
 details summary
   cursor: pointer
@@ -139,22 +132,25 @@ details summary
 details[open] summary::after
   content: "ausblenden"
 
-  span
-    display: inline-flex
-    margin-right: 5px
-    padding: 0
-    align-items: center
-    text-align: left
+
+@media only screen and (min-width: 781px) and (max-width: 1400px)
+
+  .skillset
+    width: 65vw
 
 @media only screen and (min-width: 600px) and (max-width: 780px)
 
   .skillset
-    width: 60vw
+    width: 75vw
 
 @media only screen and (max-width: 599px)
 
   .skillset
     width: 85vw
 
+  table
+    font-size: .7rem
+    td
+      font-size: .7rem
 
 </style>

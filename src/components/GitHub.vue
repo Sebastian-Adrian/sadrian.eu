@@ -144,6 +144,10 @@ onMounted(async () => {
   z-index: 1
   transition: transform 0.2s ease
   transform: scale(1)
+  h2
+    margin: 10px
+  p
+    margin: 5px
   &:hover
     z-index: 200
     transform: translateY(-5px) scale(1.03)
@@ -158,11 +162,15 @@ onMounted(async () => {
   margin: 0
   padding-left: 5%
 
+@media only screen and (min-width: 781px) and (max-width: 1400px)
+
+  .github-box
+    width: 65vw
+
 @media only screen and (min-width: 600px) and (max-width: 780px)
 
   .github-box
     width: 60vw
-
 
 @media only screen and (max-width: 599px)
 
@@ -171,7 +179,6 @@ onMounted(async () => {
     h2
       margin: 10px
       font-size: 1.3rem
-
 
   .github-box__footer
     height: auto

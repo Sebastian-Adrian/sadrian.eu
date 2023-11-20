@@ -83,7 +83,7 @@ export default {
 <style lang="sass" scoped>
 
 section
-  justify-content: space-around
+  justify-content: center
   align-content: center
   align-items: center
   display: flex
@@ -92,7 +92,8 @@ section
   top: 0
   bottom: 0
   min-height: 100vh
-  padding-top: 8vh
+  padding: 8vh 0 0 0
+  z-index: 2
 
 .aboutSection
   background: #020101 url(assets/noise.svg)
@@ -139,7 +140,6 @@ section
 
   section
     width: 100%
-    right: 0
     min-height: 100vh
     padding-top: 0
 

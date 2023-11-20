@@ -161,17 +161,17 @@ textarea:focus
   margin-left: 10px
   text-align: center
 
-@media only screen and (max-width: 1024px)
+@media only screen and (min-width: 781px) and (max-width: 1400px)
 
   .contact-box
-    width: 60vw
+    width: 65vw
 
-@media only screen and (max-width: 780px)
+@media only screen and (min-width: 600px) and (max-width: 780px)
 
   .contact-box
     width: 75vw
 
-@media only screen and (max-width: 400px)
+@media only screen and (max-width: 599px)
 
   .contact-box
     width: 85vw
