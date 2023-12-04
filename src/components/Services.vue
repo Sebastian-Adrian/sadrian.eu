@@ -1,6 +1,10 @@
 <template>
     <div v-motion-slide-visible-once-left :id="'Services'">
       <div class="border-top" ref="border-top"></div>
+      <div class="border-left" ref="border-left"></div>
+      <div class="border-right" ref="border-right"></div>
+      <div class="border-bottom-left" ref="border-bottom-left"></div>
+      <div class="border-bottom-right" ref="border-bottom-right"></div>
       <div class="service" id="services">
         <div class="service-box__cell-3">
           <div class="icon-box">
@@ -78,13 +82,29 @@ export default {
   },
   watch: {
     scrollState(state) {
-      //console.clear()
-      console.log("Direction: " + state.scrollDirection);
-      console.log("Prozent: " + state.visiblePercent)
-      const borderTop = this.$refs['border-top']
+      const borderTop = this.$refs['border-top'];
+      const borderLeft = this.$refs['border-left'];
+      const borderRight = this.$refs['border-right'];
+      const borderBottomLeft = this.$refs['border-bottom-left'];
+      const borderBottomRight = this.$refs['border-bottom-right'];
+
+      console.log(typeof parseFloat(borderLeft.style.height));
 
       if (state.scrollDirection === 'down') {
-        borderTop.style.width = state.visiblePercent + "%"
+        if (parseFloat(borderTop.style.width) < 100 || !borderTop.style.width) {
+          borderTop.style.opacity = 1;
+          borderTop.style.width = Math.min(state.visiblePercent * 4, 100) + "%";
+        } else if (parseFloat(borderLeft.style.height) < 100 || !borderLeft.style.height) {
+          borderLeft.style.opacity = 1;
+          borderLeft.style.height = Math.min(state.visiblePercent, 100) + "%";
+          borderRight.style.opacity = 1;
+          borderRight.style.height = Math.min(state.visiblePercent , 100) + "%";
+        } else  {
+          borderBottomLeft.style.opacity = 1;
+          borderBottomLeft.style.width = "50%";
+          borderBottomRight.style.opacity = 1;
+          borderBottomRight.style.width = "50%";
+        }
       }
     },
   }
@@ -98,44 +118,101 @@ export default {
   position: relative
   width: 50vw
   min-height: 50vh
-  height: auto
   text-align: center
   align-items: center
+  justify-content: center
   color: #f1f1f1
+  background: rgba(77, 77, 77, 0.13)
   //box-shadow: 5px 5px 20px 5px rgba(161, 27, 146, 0.44)
-  transition: .6s
+  transition: .7s ease-in-out
 
 .border-top
+  opacity: 0
   margin: auto
   width: 0
   top: 0
-  height: 2px
-  background: #9e4c8e
-  box-shadow: 1px -1px 20px 2px rgba(161, 27, 146, 0.44)
-  transition: .6s
+  height: 1px
+  background: rgba(255, 96, 255, 0.84)
+  box-shadow: 1px -1px 20px 2px rgba(255, 96, 255, 0.80)
+  transition: .6s ease-in-out
+.border-left
+  opacity: 0
+  top: 0
+  left: 0
+  bottom: 0
+  width: 1px
+  height: 0
+  margin-left: auto
+  margin-right: auto
+  position: absolute
+  background: rgba(255, 96, 255, 0.84)
+  box-shadow: -5px 3px 20px 3px rgba(255, 96, 255, 0.80)
+  transition: .6s ease-in-out
+  transition-delay: .6s
+.border-right
+  opacity: 0
+  top: 0
+  right: 0
+  bottom: 0
+  width: 1px
+  height: 0
+  margin-left: auto
+  margin-right: auto
+  position: absolute
+  background: rgba(255, 96, 255, 0.84)
+  box-shadow: 5px 5px 20px 5px rgba(255, 96, 255, 0.80)
+  transition: .6s ease-in-out
+  transition-delay: .6s
+.border-bottom-left
+  opacity: 0
+  left: 0
+  bottom: 0
+  width: 0
+  height: 1px
+  margin-left: auto
+  margin-right: auto
+  position: absolute
+  background: rgba(255, 96, 255, 0.84)
+  box-shadow: 5px 5px 20px 5px rgba(255, 96, 255, 0.80)
+  transition: .6s ease-in-out
+  transition-delay: 1.2s
+.border-bottom-right
+  opacity: 0
+  right: 0
+  bottom: 0
+  width: 0
+  height: 1px
+  margin-left: auto
+  margin-right: auto
+  position: absolute
+  background: rgba(255, 96, 255, 0.84)
+  box-shadow: 5px 5px 20px 5px rgba(255, 96, 255, 0.80)
+  transition: .6s ease-in-out
+  transition-delay: 1.2s
 
 .service-box__cell-3
-  background: rgba(161, 27, 146, 0.27)
+  background: rgba(77, 77, 77, 0.46)
+  border: 1px outset #A4A4A4
+  position: absolute
+  top: 40px
   display: inline-flex
   flex-direction: column
-  width: 100%
-  min-height: 50vh
+  width: calc(100% - 80px)
   padding: 10px
+  margin: auto
 
 table
   text-align: left
   font-size: .9em
-  border-spacing: 10px
   width: 100%
   td, th
     text-align: left
     font-size: .9em
-    border-spacing: 10px
-    background-color: rgba(91, 53, 94, 0.38)
-    border-top: 1px solid
-    border-bottom: 1px solid
-    border-radius: 15px
-    border-color: #9e4c8e
+    background-color: rgba(105, 105, 105, 0.17)
+    //border-top: 1px solid
+    //border-bottom: 1px solid
+    //border-radius: 2px
+    //border-color: #9e4c8e
     padding: 10px
     word-wrap: break-word
     overflow-wrap: break-word
