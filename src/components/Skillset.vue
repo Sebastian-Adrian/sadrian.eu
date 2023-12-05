@@ -96,6 +96,7 @@ const componentName = 'Skillset'
   display: table-cell
   width: 100%
   border-radius: 25px
+  padding: 10px
 
 table
   text-align: left
@@ -103,7 +104,7 @@ table
   border-spacing: 10px
   width: 100%
   padding-right: 0.8rem
-  td
+  td, th
     width: 30%
     text-align: left
     font-size: .9em
@@ -150,6 +151,7 @@ details[open] summary::after
 
   table
     font-size: .7rem
+    border-spacing: 8px
     td
       font-size: .7rem
 

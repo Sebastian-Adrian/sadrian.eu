@@ -27,7 +27,7 @@
         <label>Nachricht</label>
         <textarea v-model="message" required rows="8"></textarea>
         <span v-if="message">
-          <label v-if="!formComplete" class="invalidMailLabel">unvollständig</label>
+          <label v-if="!formComplete" class="invalidMailLabel">Bitte fülle alle Felder aus</label>
         </span>
       </form>
       <div class="submit">

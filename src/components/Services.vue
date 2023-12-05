@@ -1,8 +1,7 @@
 <template>
-    <div v-motion-slide-visible-once-left :id="'Services'">
-      <div class="border-top" ref="border-top"></div>
+    <div v-motion-slide-visible-once-left :id="componentName">
       <div class="service" id="services">
-        <div class="service-box__cell-3">
+        <div class="service__cell">
           <div class="icon-box">
           <span>
             <svg height="32" viewBox="0 -960 960 960" width="32"
@@ -23,7 +22,7 @@
                       <path
                           d="M480-120q-74.615 0-140.308-28.423Q274-176.846 225.09-225.5q-48.911-48.654-77-114.423Q120-405.692 120-480.821q0-74.692 28.09-140.269 28.089-65.577 77-114.231 48.91-48.654 114.602-76.666Q405.385-840 480-840q74.692 0 140.346 28.013Q686-783.975 734.91-735.321q48.911 48.654 77.001 114.231Q840-555.513 840-480.821q0 75.129-28.089 140.898-28.09 65.769-77.001 114.423-48.91 48.654-114.564 77.077Q554.692-120 480-120Zm0-32.41q38.154-44.718 62.205-91.026 24.052-46.307 39.334-105.949H378.615Q394.769-287.282 418.564-241q23.795 46.282 61.436 88.59Zm-44.923-4.872q-30.103-34.282-54.68-85.705-24.577-51.423-36.859-106.398H180.102q37.308 80.924 102.449 129.744 65.141 48.821 152.526 62.359Zm90.513-.154q82.82-11.589 150.141-62.282 67.321-50.692 104.167-129.667H616.616q-16.283 56.103-40.526 107.013-24.244 50.911-50.5 84.936ZM168.513-383.231h168.513q-4.539-26.718-6.27-50.884-1.73-24.167-1.73-46.706 0-23.153 1.807-46.756 1.808-23.603 6.346-49.346H168.513q-7.359 21.897-11.013 46.32-3.654 24.423-3.654 49.782 0 25.872 3.654 50.526 3.654 24.654 11.013 47.064Zm202.666 0h217.795q4.693-27.846 6.5-50.679 1.808-22.834 1.808-46.911 0-23.41-1.808-45.833-1.807-22.423-6.5-50.269H371.179q-4.692 27.846-6.5 50.269-1.807 22.423-1.807 45.833 0 24.077 1.807 46.911 1.808 22.833 6.5 50.679Zm251.642 0h168.666q7.359-22.41 11.013-47.064t3.654-50.526q0-25.359-3.654-49.782-3.654-24.423-11.013-46.32h-168q4.026 28.974 5.834 52.167 1.807 23.192 1.807 43.935 0 22.693-1.884 46.295-1.885 23.603-6.423 51.295Zm-6.359-227.538h163.436q-36.795-81.641-102.193-131.052-65.397-49.41-152.782-61.666 30.103 37.974 53.834 87.833 23.73 49.859 37.705 104.885Zm-237.847 0h203.59q-15.692-58.718-41.025-107.667-25.334-48.949-61.18-88.846-34.872 36.666-59.077 83.743t-42.308 112.77Zm-198.513 0h163.59q13.667-54.564 37.064-104.09 23.398-49.526 53.654-88.475-87.641 12.77-152.423 61.898T180.102-610.769Z"/>
                     </svg>
-                    <a>Development</a>
+                    <a>Webdevelopment</a>
                   </span>
                 </th>
                 <th>
@@ -47,7 +46,7 @@
               </tr>
               <tr>
                 <td>
-                  Ich entwickle moderne und individuelle Responsive Webseiten
+                  Ich entwickle moderne und individuelle Responsive-Webseiten
                 </td>
                 <td>
                   Ich entwickle platformübergreifende Mobile- und Desktop Apps
@@ -60,66 +59,34 @@
           </div>
       </div>
     </div>
-</template>
-<script>
-
-
-
-export default {
-
-
-  mounted() {
-  },
-  props: {
-    scrollState: {
-      type: Object,
-      default: 0,
-    }
-  },
-  watch: {
-    scrollState(state) {
-      //console.clear()
-      console.log("Direction: " + state.scrollDirection);
-      console.log("Prozent: " + state.visiblePercent)
-      const borderTop = this.$refs['border-top']
-
-      if (state.scrollDirection === 'down') {
-        borderTop.style.width = state.visiblePercent + "%"
-      }
-    },
-  }
-};
-
+</template >
+<script setup>
+  const componentName = 'Services'
 </script>
 <style lang="sass" scoped>
 
 .service
   display: flex
   position: relative
-  width: 50vw
-  min-height: 50vh
+  width: 40vw
   height: auto
   text-align: center
   align-items: center
   color: #f1f1f1
-  //box-shadow: 5px 5px 20px 5px rgba(161, 27, 146, 0.44)
+  box-shadow: 5px 5px 20px 5px rgba(161, 27, 146, 0.44)
+  border-radius: 25px
+  border: #9e4c8e 1px solid
   transition: .6s
+  span
+    display: flex
+    flex-direction: row
+    align-items: center
 
-.border-top
-  margin: auto
-  width: 0
-  top: 0
-  height: 2px
-  background: #9e4c8e
-  box-shadow: 1px -1px 20px 2px rgba(161, 27, 146, 0.44)
-  transition: .6s
-
-.service-box__cell-3
+.service__cell
   background: rgba(161, 27, 146, 0.27)
-  display: inline-flex
-  flex-direction: column
+  display: table-cell
   width: 100%
-  min-height: 50vh
+  border-radius: 25px
   padding: 10px
 
 table
@@ -127,18 +94,18 @@ table
   font-size: .9em
   border-spacing: 10px
   width: 100%
+  padding-right: 0.8rem
   td, th
+    width: 30%
     text-align: left
     font-size: .9em
-    border-spacing: 10px
     background-color: rgba(91, 53, 94, 0.38)
     border-top: 1px solid
     border-bottom: 1px solid
     border-radius: 15px
     border-color: #9e4c8e
     padding: 10px
-    word-wrap: break-word
-    overflow-wrap: break-word
+    margin: 0
     a
       font-size: .9rem
   th
@@ -170,22 +137,38 @@ table
     table
       font-size: .8rem
 
-@media only screen and (max-width: 599px)
+@media only screen and (min-width: 450px) and (max-width: 599px)
 
   .service
     width: 85vw
   table
     border-spacing: 5px
-    td
-      padding: 2px
+    padding-right: 0
+    td, th
       font-size: .7rem
+      padding: 5px
     a
       display: none
     th
-      align-content: center
-  .service-box__cell-3
-    background: rgba(161, 27, 146, 0.27)
+      span
+        align-content: center
+        justify-content: center
+
+@media only screen and (max-width: 449px)
+
+  .service
     width: 85vw
-    border-radius: 25px
+    table
+      border-spacing: 4px
+      padding-right: 0
+      td, th
+        font-size: .6rem
+        padding: 4px
+      a
+        display: none
+      th
+        span
+          align-content: center
+          justify-content: center
 
 </style>
