@@ -20,10 +20,10 @@
   </section>
   <section class="githubSection">
     <Waypoint @change="changePortfolioState">
-    <suspense>
-      <GitHub>
-      </GitHub>
-    </suspense>
+      <suspense>
+        <GitHub>
+        </GitHub>
+      </suspense>
     </Waypoint>
   </section>
   <section class="serviceSection">
@@ -32,15 +32,8 @@
       </Contact>
     </waypoint>
   </section>
-
-  <!--
-      <div class="footer">
-        <ul>
-          <li><a href="#">Impressum</a></li>
-          <li><a href="#">Datenschutz</a></li>
-          <li><a href="#">^</a></li>
-        </ul>
-      </div>-->
+    <Footer>
+    </Footer>
 </template>
 <script>
 
@@ -51,6 +44,7 @@ import About from "@/components/About.vue"
 import Navigation from "@/components/Navigation.vue"
 import {Waypoint} from "vue-waypoint";
 import Skillset from "@/components/Skillset.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: 'App',
@@ -62,7 +56,7 @@ export default {
       contactIsVisible: false,
     };
   },
-  components: {Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
+  components: {Footer, Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
   methods: {
     // übergibt die aktuelle Position auf Screen und prüft auf Sichtbarkeit ('IN')
     changeServiceState (state) {

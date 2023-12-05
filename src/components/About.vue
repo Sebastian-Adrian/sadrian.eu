@@ -12,6 +12,13 @@
         Seit nunmehr 8 Jahren beschäftige ich mich mit der Entwicklung von JAVA- und WEB-Applikationen.
       </p>
       <p>
+        <br>
+        Aktuell beschäftige ich mich vor allem mit reaktiven JavaScript Frameworks wie Vue, Angular oder React, sowie
+        der JavaScript-Laufzeitumgebung Node.js.
+      </p>
+      <p>
+        <br>
+        Nachfolgend erhalten Sie unter Portfolio einen kleinen Einblick bisheriger Projekte.
       </p>
     </div>
     <div class="slider">

@@ -26,9 +26,12 @@
         <input v-model="subject" required type="text">
         <label>Nachricht</label>
         <textarea v-model="message" required rows="8"></textarea>
+        <span v-if="message">
+          <label v-if="!formComplete" class="invalidMailLabel">unvollständig</label>
+        </span>
       </form>
       <div class="submit">
-        <button @click="sendEmail">abschicken</button>
+        <button @click="sendEmail" :disabled="!formComplete">abschicken</button>
       </div>
   </div>
 </template>
@@ -41,6 +44,10 @@ const contact_name = ref('');
 const subject = ref('');
 const message = ref('');
 const componentName = 'Contact';
+
+const formComplete = computed(() => {
+  return !(!email.value || !subject.value || !message.value || !contact_name.value);
+});
 
 const validEmail = computed(() => {
   return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value);

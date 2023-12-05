@@ -55,9 +55,9 @@
                 <td>Webstorm</td>
               </tr>
               <tr>
-                <td>shellscript</td>
-                <td>(..))</td>
-                <td>Unix</td>
+                <td>MySQL</td>
+                <td>...</td>
+                <td>MySQL Workbench</td>
               </tr>
               </tbody>
             </table>
