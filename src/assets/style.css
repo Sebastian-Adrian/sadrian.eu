@@ -53,6 +53,7 @@ a {
 .info-table__content {
   margin: 8px;
   width: 100%;
+  height: auto;
 }
 
 .txt-block__box-1 a, .txt-block__box-2 a, .txt-block__box-3 a {
@@ -83,7 +84,6 @@ a {
   align-items: center;
   justify-items: center;
   justify-content: left;
-  padding: 0.8rem;
 }
 .icon-box span {
   padding-left: 0.3rem;
