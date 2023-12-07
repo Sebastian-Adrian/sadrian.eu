@@ -9,10 +9,10 @@
           <div class="modal-header">
             <slot name="header"><h1>Impressum & Datenschutz</h1></slot>
           </div>
-
-          <div class="modal-body">
+          <div class="modal-body" >
             <slot name="body">
               <h2>Redaktionell Verantwortlicher:</h2>
+                <br>
                 Sebastian Adrian
                 <br>
                 Mozartstraße 5
@@ -21,12 +21,27 @@
                 <br>
                 Kontakt: mail@sadrian.eu
                 <br><br>
-                SSL- bzw. TLS-Verschlüsselung
+              <h2>Datenschutz:</h2>
+              <br>
+              <h3>Allgemeine Hinweise</h3>
+              Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert,
+              wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+              Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
+              <br>
+              <br>
+              <h3>SSL- bzw. TLS-Verschlüsselung</h3>
                 Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
                 Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.
-                <br>
-                Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:
-                <br>
+              <br><br>
+              <h3>Externes Hosting</h3>
+              Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.
+              <br>
+              Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO). Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TTDSG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z. B. Device-Fingerprinting) im Sinne des TTDSG umfasst. Die Einwilligung ist jederzeit widerrufbar.
+              <br>
+              Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen.
+              <br>
+              Wir setzen folgenden Hoster ein:
+              <br>
                 <br>
                 <ul>
                   <li>
@@ -64,6 +79,7 @@ export default {
   data() {
     return {
       showModal: false,
+      modalBodyMaxHeight: '100%',
     };
   },
   methods: {
@@ -81,8 +97,6 @@ export default {
 
 a
   cursor: pointer
-
-
 p
   color: black
 
@@ -93,6 +107,7 @@ p
   display: block
   position: fixed
   bottom: 0
+  left: 0
   line-height: 1
   z-index: 10000
   background-color: rgb(64, 64, 64)
@@ -109,15 +124,13 @@ p
   display: table
   transition: opacity 0.3s ease
 
-
 .modal-wrapper
   display: table-cell
   vertical-align: middle
 
-
 .modal-container
-  width: 75vw
-  height: 75vh
+  width: 85vw
+  height: 80vh
   margin: 0 auto
   padding: 20px 30px
   background-color: #fff
@@ -125,36 +138,27 @@ p
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33)
   transition: all 0.3s ease
 
-
 .modal-header h3
   margin-top: 0
   color: #42b983
 
-
 .modal-body
   margin: 20px 0
-
+  overflow-y: auto
+  max-height: 90%
 
 .modal-default-button
   float: right
+  width: 5rem
+  height: 2rem
 
-
-/*
- * The following styles are auto-applied to elements with
- * transition="modal" when their visibility is toggled
- * by Vue.js.
- *
- * You can easily play with the modal transition by editing
- * these styles.
- */
+.modal-footer
 
 .modal-enter-from
   opacity: 0
 
-
 .modal-leave-to
   opacity: 0
-
 
 .modal-enter-from .modal-container,
 .modal-leave-to .modal-container

@@ -153,6 +153,6 @@ details[open] summary::after
     font-size: .7rem
     border-spacing: 8px
     td
-      font-size: .7rem
+      font-sizcde: .7rem
 
 </style>

@@ -31,7 +31,7 @@
         </span>
       </form>
       <div class="submit">
-        <button @click="sendEmail" :disabled="!formComplete">abschicken</button>
+        <button @click="sendEmail" :disabled="!formComplete || !validEmail">abschicken</button>
       </div>
   </div>
 </template>
@@ -97,21 +97,18 @@ const sendEmail = async () => {
   padding: 0
   z-index: 10
 
-
 form
   margin: 0.8rem auto
   max-width: 420px
   padding: 20px
   text-align: left
-    z-index: 10
-
+  z-index: 10
 
 label
   display: inline-block
   font-size: 0.85rem
   margin: 15px 0 5px
   z-index: 10
-
 
 input
   background-color: #fffffa
@@ -122,15 +119,12 @@ input
   width: 100%
   z-index: 10
 
-
 .invalidMailInput
   border-color: red
-
 
 .invalidMailInput:focus
   border-color: red
   box-shadow: 5px 5px 20px 5px rgba(220, 77, 77, 0.65)
-
 
 input:focus
   background-color: #E6E6E1
@@ -138,10 +132,8 @@ input:focus
   box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
   outline: none
 
-
 .submit
   margin: 0.8rem
-
 
 textarea
   background-color: #fffffa
@@ -152,13 +144,11 @@ textarea
   width: 100%
   resize: none
 
-
 textarea:focus
   background-color: #E6E6E1
   border-color: #7898FB
   box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
   outline: none
-
 
 .invalidMailLabel
   color: #d00000
