@@ -143,16 +143,18 @@ p
   color: #42b983
 
 .modal-body
-  margin: 20px 0
+  margin-top: 20px
   overflow-y: auto
-  max-height: 90%
+  max-height: 85%
 
 .modal-default-button
+  display: inline-block
   float: right
   width: 5rem
   height: 2rem
 
 .modal-footer
+
 
 .modal-enter-from
   opacity: 0
