@@ -1,7 +1,7 @@
 <template>
     <div v-for="repo in repos" :key="repo.id" v-motion-fade-visible-once :id="componentName"
          v-on:click.stop.prevent="openLink(repo.html_url)">
-      <div class="github-box">
+      <div v-if="!repo.private" class="github-box">
         <div class="icon-box">
           <span>
             <img alt="GitHub-Logo" src="../assets/github-mark-white.png" width="32"/>
@@ -120,6 +120,7 @@ onMounted(async () => {
         })
     );
     repos.value = reposData;
+    console.log(repos.value)
 
   } catch (error) {
     console.error('Fehler beim Abrufen der Repo Daten:', error);

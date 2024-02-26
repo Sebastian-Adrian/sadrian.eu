@@ -163,13 +163,10 @@ export default {
 
 <style lang="sass" scoped>
 
-root
-  --nav-width: 140px
-
 nav
   display: flex
   position: fixed
-  width: 100%
+  width: 100vw
   top: 0
   left: 0
   bottom: 0
