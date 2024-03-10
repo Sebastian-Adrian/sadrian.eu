@@ -120,7 +120,6 @@ onMounted(async () => {
         })
     );
     repos.value = reposData;
-    console.log(repos.value)
 
   } catch (error) {
     console.error('Fehler beim Abrufen der Repo Daten:', error);

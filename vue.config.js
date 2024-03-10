@@ -8,7 +8,13 @@ module.exports = defineConfig({
         ],
     },
     devServer: {
-        // Dev-Server
-        proxy: 'http://localhost:3000'
+        proxy: {
+            '/api/send-email': {
+
+                target: 'http://localhost:3000',
+                ws: true,
+                changeOrigin: true
+            }
+        }
     }
 })

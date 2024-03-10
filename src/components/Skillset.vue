@@ -34,11 +34,6 @@
               <td>vsCode</td>
             </tr>
             <tr>
-              <td>Python</td>
-              <td>PyQt5</td>
-              <td>PyCharm</td>
-            </tr>
-            <tr>
               <td>PHP, HTML5, CSS3 (Sass)</td>
               <td>Node.js</td>
               <td>PhpStorm</td>
@@ -49,11 +44,6 @@
             <summary></summary>
             <table>
               <tbody>
-              <tr>
-                <td>Kotlin</td>
-                <td>Bootstrap</td>
-                <td>Webstorm</td>
-              </tr>
               <tr>
                 <td>MySQL</td>
                 <td>...</td>

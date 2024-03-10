@@ -13,22 +13,36 @@
       <form>
         <label>Name</label>
         <input
-            v-model="contact_name"
+            id="contact_name"
+            :ref="(el) => validateInput(el)"
+            v-model="formData.contact_name"
             required type="text"
             inputmode="text"
             autocomplete="name"/>
         <label>E-Mail</label>
-        <span v-if="email">
+        <span v-if="formData.email">
           <label v-if="!validEmail" class="invalidMailLabel">Ungültige Email</label>
         </span>
-        <input v-model="email" :class="{ invalidMailInput: !validEmail && email }" required type="email">
+        <input
+            id="email"
+            :ref="(el) => validateInput(el)"
+            v-model="formData.email"
+            :class="{ invalidMailInput: !validEmail && formData.email }"
+            required type="email">
         <label>Betreff</label>
-        <input v-model="subject" required type="text">
+        <input
+            id="subject"
+            :ref="(el) => validateInput(el)"
+            v-model="formData.subject"
+            required type="text">
         <label>Nachricht</label>
-        <textarea v-model="message" required rows="8"></textarea>
-        <span v-if="message">
-          <label v-if="!formComplete" class="invalidMailLabel">Bitte fülle alle Felder aus</label>
-        </span>
+        <textarea
+            id="message"
+            :ref="(el) => validateInput(el)"
+            class="messageBox"
+            v-model="formData.message"
+            required rows="8">
+        </textarea>
       </form>
       <div class="submit">
         <button @click="sendEmail" :disabled="!formComplete || !validEmail">abschicken</button>
@@ -36,47 +50,96 @@
   </div>
 </template>
 
-<script setup>
-import {computed, ref} from 'vue';
+<script>
 
-const email = ref('');
-const contact_name = ref('');
-const subject = ref('');
-const message = ref('');
-const componentName = 'Contact';
+export default {
 
-const formComplete = computed(() => {
-  return !(!email.value || !subject.value || !message.value || !contact_name.value);
-});
+  data() {
+    return {
+      formData: {
+        email: '',
+        contact_name: '',
+        subject: '',
+        message: '',
 
-const validEmail = computed(() => {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value);
-});
-
-const sendEmail = async () => {
-  try {
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        from: email.value,
-        subject: subject.value,
-        text: message.value,
-        name: contact_name.value,
-      }),
-    });
-
-    if (response.ok) {
-      console.log('E-Mail erfolgreich gesendet');
-    } else {
-      console.error('Fehler beim Senden der E-Mail');
+      componentName: 'Contact',
+      isInitName: false,
+      isInitEmail: false,
+      isInitSubject: false,
+      isInitMessage: false,
     }
-  } catch (error) {
-    console.error('Fehler beim Senden der E-Mail', error);
+  },
+
+  computed: {
+    validEmail: function () {
+      if (this.formData.email === '') {
+        return true
+      } else {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.formData.email);
+      }
+    },
+    formComplete: function() {
+      return (this.formData.email && this.formData.contact_name && this.formData.subject && this.formData.message);
+    },
+  },
+
+  methods: {
+
+    validateInput(element) {
+      switch (element.id) {
+        case 'contact_name':
+          this.validateField(element, 'isInitName');
+          break;
+        case 'subject':
+          this.validateField(element, 'isInitSubject');
+          break;
+        case 'message':
+          this.validateField(element, 'isInitMessage');
+          break;
+        case 'email':
+          this.validateField(element, 'isInitEmail');
+          break;
+      }
+    },
+
+    validateField(element, initFlag) {
+      if (element.value !== '') {
+        this[initFlag] = true;
+        element.classList.remove('invalidInput');
+      } else {
+        if (this[initFlag]) {
+          element.classList.add('invalidInput');
+        }
+      }
+    },
+
+    async sendEmail(){
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: email.value,
+            subject: subject.value,
+            text: message.value,
+            name: contact_name.value,
+          }),
+        });
+
+        if (response.ok) {
+          console.log('E-Mail erfolgreich gesendet');
+        } else {
+          console.error('Fehler beim Senden der E-Mail');
+        }
+      } catch (error) {
+        console.error('Fehler beim Senden der E-Mail', error);
+      }
+    },
   }
-};
+}
 </script>
 
 <style lang="sass" scoped>
@@ -119,11 +182,11 @@ input
   width: 100%
   z-index: 10
 
-.invalidMailInput
-  border-color: red
+.invalidInput
+  border-color: red !important
 
-.invalidMailInput:focus
-  border-color: red
+.invalidInput:focus
+  border-color: red !important
   box-shadow: 5px 5px 20px 5px rgba(220, 77, 77, 0.65)
 
 input:focus
@@ -135,16 +198,18 @@ input:focus
 .submit
   margin: 0.8rem
 
-textarea
+.messageBox
   background-color: #fffffa
+  border-color: unset
   border-radius: 5px
   box-sizing: border-box
   display: block
   padding: 5px 6px
   width: 100%
   resize: none
+  overflow-y: scroll
 
-textarea:focus
+.messageBox:focus
   background-color: #E6E6E1
   border-color: #7898FB
   box-shadow: 5px 5px 20px 5px rgba(101, 128, 212, 0.45)
