@@ -1,5 +1,10 @@
 <template>
-  <div v-motion-pop-visible-once class="contact-box" :id="componentName">
+  <transition name="fade">
+   <div
+      v-motion-pop-visible-once
+      class="contact-box"
+      :id="componentName"
+      id="contactBox">
       <div class="icon-box">
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="white" height="32" viewBox="0 -960 960 960" width="32">
@@ -10,7 +15,7 @@
           Kontakt
         </span>
       </div>
-      <form>
+      <form @submit.prevent="sendEmail">
         <label>Name</label>
         <input
             id="contact_name"
@@ -45,12 +50,19 @@
         </textarea>
       </form>
       <div class="submit">
-        <button @click="sendEmail" :disabled="!formComplete || !validEmail">abschicken</button>
+        <button
+            type="submit"
+            @click="sendEmail"
+            :disabled="!formComplete || !validEmail">abschicken
+        </button>
       </div>
   </div>
+  </transition>
 </template>
 
 <script>
+
+import axios from "axios";
 
 export default {
 
@@ -82,11 +94,17 @@ export default {
     formComplete: function() {
       return (this.formData.email && this.formData.contact_name && this.formData.subject && this.formData.message);
     },
+
   },
 
   methods: {
 
     validateInput(element) {
+
+      if (element == null) {
+        return;
+      }
+
       switch (element.id) {
         case 'contact_name':
           this.validateField(element, 'isInitName');
@@ -115,34 +133,34 @@ export default {
     },
 
     async sendEmail(){
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: email.value,
-            subject: subject.value,
-            text: message.value,
-            name: contact_name.value,
-          }),
-        });
 
-        if (response.ok) {
-          console.log('E-Mail erfolgreich gesendet');
-        } else {
-          console.error('Fehler beim Senden der E-Mail');
-        }
-      } catch (error) {
-        console.error('Fehler beim Senden der E-Mail', error);
-      }
+      axios.post('/api/send-email', this.formData)
+          .then(response => {
+            if (response.status === 200) {
+              this.$emit('unloadContactComponent', 200, 'Deine Nachricht wurde erfolgreich versendet :-)');
+            }
+          })
+          .catch(error => {
+            if (error.response.status === 406) {
+              let statusCode = error.response.status;
+
+              this.$emit('unloadContactComponent', statusCode, 'Bitte kein Spam');
+            }
+          });
+
     },
   }
 }
 </script>
 
 <style lang="sass" scoped>
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity 0.5s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
+
 
 .contact-box
   display: block

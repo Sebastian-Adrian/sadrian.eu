@@ -11,6 +11,7 @@
           </span>
           <span>
             Skillset
+
           </span>
         </div>
         <div class="info-table__content">

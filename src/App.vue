@@ -28,8 +28,8 @@
   </section>
   <section class="serviceSection">
     <waypoint @change="changeContactState">
-      <Contact>
-      </Contact>
+      <component :is="currentComponent" @unload-contact-component="unloadContactComponent">
+      </component>
     </waypoint>
   </section>
     <Footer>
@@ -39,9 +39,10 @@
 
 import GitHub from "@/components/GitHub.vue";
 import Contact from "@/components/Contact.vue";
-import Services from "@/components/Services.vue"
-import About from "@/components/About.vue"
-import Navigation from "@/components/Navigation.vue"
+import Services from "@/components/Services.vue";
+import About from "@/components/About.vue";
+import Navigation from "@/components/Navigation.vue";
+import LandingPage from "@/components/LandingPage.vue";
 import {Waypoint} from "vue-waypoint";
 import Skillset from "@/components/Skillset.vue";
 import Footer from "@/components/Footer.vue";
@@ -54,9 +55,11 @@ export default {
       skillsetIsVisible: false,
       portfolioIsVisible: false,
       contactIsVisible: false,
+      isContactFormSend: false,
+      currentComponent: 'Contact',
     };
   },
-  components: {Footer, Waypoint, Navigation, GitHub, Contact, Services, About, Skillset},
+  components: {Footer, Waypoint, Navigation, GitHub, Contact, Services, About, Skillset, LandingPage},
   methods: {
     // übergibt die aktuelle Position auf Screen und prüft auf Sichtbarkeit ('IN')
     changeServiceState (state) {
@@ -70,6 +73,10 @@ export default {
     },
     changeContactState(state) {
       this.contactIsVisible = state.going === 'IN';
+    },
+
+    unloadContactComponent() {
+      this.currentComponent = 'LandingPage';
     },
   }
 }
