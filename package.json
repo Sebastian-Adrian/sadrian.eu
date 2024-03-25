@@ -18,7 +18,6 @@
     "moment": "^2.29.4",
     "node": "^20.6.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
-    "nodemailer": "^6.9.5",
     "octokit": "^3.1.0",
     "vue": "^3.2.13",
     "vue-waypoint": "^4.3.0",

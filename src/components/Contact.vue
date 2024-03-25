@@ -46,8 +46,8 @@
             :ref="(el) => validateInput(el)"
             class="messageBox"
             v-model="formData.message"
-            required rows="8">
-        </textarea>
+            required rows="8"
+        />
       </form>
       <div class="submit">
         <button
@@ -143,7 +143,6 @@ export default {
           .catch(error => {
             if (error.response.status === 406) {
               let statusCode = error.response.status;
-
               this.$emit('unloadContactComponent', statusCode, 'Bitte kein Spam');
             }
           });
@@ -205,7 +204,7 @@ input
 
 .invalidInput:focus
   border-color: red !important
-  box-shadow: 5px 5px 20px 5px rgba(220, 77, 77, 0.65)
+  box-shadow: 5px 5px 20px 5px rgba(220, 77, 77, 0.65) !important
 
 input:focus
   background-color: #E6E6E1
