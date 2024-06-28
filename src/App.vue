@@ -83,6 +83,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 
+
 section
   justify-content: center
   align-content: center

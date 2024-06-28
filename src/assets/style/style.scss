@@ -27,6 +27,10 @@ p {
   color: $ciWhite;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .info-table-4__footer__status span {
   display: inline-flex;
   margin-left: 5px;
