@@ -11,7 +11,6 @@
           </span>
           <span>
             Skillset
-
           </span>
         </div>
         <div class="info-table__content">
@@ -37,7 +36,7 @@
             <tr>
               <td>PHP, HTML5, CSS3 (Sass)</td>
               <td>Node.js</td>
-              <td>PhpStorm</td>
+              <td>Git, Docker</td>
             </tr>
             </tbody>
           </table>
