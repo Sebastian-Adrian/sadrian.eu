@@ -94,7 +94,6 @@ export default {
     formComplete: function() {
       return (this.formData.email && this.formData.contact_name && this.formData.subject && this.formData.message);
     },
-
   },
 
   methods: {
