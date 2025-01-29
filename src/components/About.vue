@@ -14,7 +14,7 @@
       <p>
         <br>
         Aktuell beschäftige ich mich vor allem mit reaktiven JavaScript Frameworks wie Vue, Angular oder React, sowie
-        der JavaScript-Laufzeitumgebung Node.js.
+        dem Java Framework Spring Boot.
       </p>
       <p>
         <br>
