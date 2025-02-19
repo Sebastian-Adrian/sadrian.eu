@@ -105,6 +105,7 @@ onMounted(async () => {
       },
     });
     const reposData = response.data;
+    console.log('Repos:', reposData);
 
     // Gleichzeitiges Abrufen von Sprachen für jedes Repo mit Promise.all
     await Promise.all(
@@ -116,10 +117,12 @@ onMounted(async () => {
               'X-GitHub-Api-Version': '2022-11-28',
             },
           });
-          repo.languages = languagesResponse.data;
+          repo["languages"] = languagesResponse.data;
         })
     );
     repos.value = reposData;
+    // nach Datum sortieren
+    repos.value.sort(({created_at: a}, {created_at: b}) => new Date(b) - new Date(a));
 
   } catch (error) {
     console.error('Fehler beim Abrufen der Repo Daten:', error);
