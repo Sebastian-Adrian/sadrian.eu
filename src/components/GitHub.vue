@@ -105,6 +105,7 @@ onMounted(async () => {
       },
     });
     const reposData = response.data;
+    console.log('Repos:', reposData);
 
     // Gleichzeitiges Abrufen von Sprachen für jedes Repo mit Promise.all
     await Promise.all(
