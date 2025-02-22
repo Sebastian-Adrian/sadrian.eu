@@ -75,6 +75,9 @@ import githubConfig from '@/githubConfig.js';
 const componentName = 'GitHub';
 const octokit = new Octokit({ auth: githubConfig.key });
 const repos = ref([]);
+const headers = {
+  'X-GitHub-Api-Version': githubConfig.apiVersion || '2022-11-28',
+};
 
 // GitHub Datum in richtiges Format setzen
 const formatDate = (date) => {
@@ -96,28 +99,28 @@ const getLanguages = (languagesObj) => {
 };
 
 onMounted(async () => {
+
   try {
     // Abrufen der Repositories
     const response = await octokit.request('GET /user/repos', {
       affiliation: 'owner',
-      headers: {
-        'X-GitHub-Api-Version': '2022-11-28',
-      },
+      headers,
     });
     const reposData = response.data;
-    console.log('Repos:', reposData);
 
     // Gleichzeitiges Abrufen von Sprachen für jedes Repo mit Promise.all
     await Promise.all(
         reposData.map(async (repo) => {
-          const languagesResponse = await octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/languages', {
-            owner: repo.owner.login,
-            repo: repo.name,
-            headers: {
-              'X-GitHub-Api-Version': '2022-11-28',
-            },
-          });
-          repo["languages"] = languagesResponse.data;
+          try {
+            const languagesResponse = await octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/languages', {
+              owner: repo.owner.login,
+              repo: repo.name,
+              headers,
+            });
+            repo["languages"] = languagesResponse.data;
+          } catch (error) {
+            console.error(`Fehler beim Abrufen der Sprachen für ${repo.name}:`, error);
+          }
         })
     );
     repos.value = reposData;
