@@ -21,6 +21,5 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-/src/emails/emailConfig.js
+/src/emailConfig.js
 /src/githubConfig.js
-/src/components/githubConfig.js
