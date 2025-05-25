@@ -6,7 +6,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
-const { Octokit } = require('octokit');
+const { Octokit } = require('@octokit/rest');
 const cors = require('cors');
 
 const app = express();
