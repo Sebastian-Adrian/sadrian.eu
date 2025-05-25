@@ -1,0 +1,35 @@
+{
+  "name": "sadrian.eu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@vueuse/motion": "^2.0.0",
+    "aos": "^3.0.0-beta.6",
+    "axios": "^1.6.7",
+    "core-js": "^3.8.3",
+    "dotenv": "^16.5.0",
+    "ioredis": "^5.3.2",
+    "mitt": "^3.0.1",
+    "moment": "^2.29.4",
+    "node": "^20.6.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
+    "octokit": "^3.1.0",
+    "vue": "^3.2.13",
+    "vue-waypoint": "^4.3.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-class-static-block": "^7.26.0",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "sass": "^1.68.0",
+    "sass-loader": "^13.3.2"
+  }
+}

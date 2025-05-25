@@ -1,0 +1,109 @@
+$prime: #ff6e48;
+$ciBlue: #00fff1;
+$ciRed: #ff00aa;
+$ciWhite: #f5f5f5;
+$ciGreen: #46fcb4;
+$ciSecond: #0c1016;
+$ciYellow: #fff200;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  //background: linear-gradient(327.21deg, rgba(45, 45, 45, 0.4) 3.65%, rgba(8, 18, 19, 0.8) 40.32%), linear-gradient(245.93deg, rgb(1, 30, 29) 0%, rgba(209, 25, 80, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19,255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #0c1016 url(../assets/noise.svg);
+  //background: linear-gradient(377.21deg, rgba(0, 75, 41, 0.24) 3.65%, rgba(0, 95, 136, 0) 40.32%), linear-gradient(245.93deg, rgba(21, 187, 209, 0.16) 0%, rgba(25, 138, 209, 0) 36.63%), linear-gradient(147.6deg, rgba(58, 19, 255, 0) 29.79%, rgba(98, 19, 255, 0.01) 85.72%), #13111C;
+  //background: linear-gradient(50deg, hsl(194, 100%, 20%) 6%, hsl(218, 11%, 40%) 51%, hsla(198, 34%, 47%, 0.51) 67%, hsla(205, 45%, 28%, 0.52) 77%, hsl(54deg 77% 54%) 85%, hsl(55deg 100% 50%) 90%, hsl(49deg 100% 50%) 95%, hsl(43deg 100% 50%) 98%, hsl(35deg 100% 50%) 100%, hsl(25deg 100% 50%) 101%, hsl(0deg 100% 50%) 100%);
+  //background-image: linear-gradient(to right top, #002325, #133f44, #2a5d65, #437c89, #5e9db0, #5fa1b5, #5fa6b9, #60aabe, #46929f, #2f7b81, #186465, #004e49);
+  overflow-x: hidden;
+}
+
+p {
+  font-size: .9em;
+  color: $ciWhite;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.info-table-4__footer__status span {
+  display: inline-flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  text-align: center;
+  align-items: center;
+  vertical-align: center;
+  font-size: 12px;
+}
+
+.box__subtitle {
+  color: white;
+  font-size: 1em;
+}
+
+.info-table__content {
+  margin: 8px;
+  width: 100%;
+  height: auto;
+}
+
+.txt-block__box-1 a, .txt-block__box-2 a, .txt-block__box-3 a {
+  font-size: .9em;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.txt-block__box-1 p, .txt-block__box-2 p, .txt-block__box-3 p {
+  color: #bcbcbc;
+  font-size: .9em;
+}
+
+.txt-block__headline h3 {
+  display: inline;
+  vertical-align: top;
+  font-size: 1em;
+}
+
+.icon {
+  fill: white;
+}
+
+.icon-box {
+  display: flex;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  justify-content: left;
+  margin: 0.8rem;
+
+  span {
+    padding-right: 0.3rem;
+  }
+}
+
+/* MEDIA */
+/* 4K */
+@media screen and (min-width: 1921px) {
+  // styles for 4K
+}
+
+/* HD - Desktop */
+@media screen and (min-width: 1001px) and (max-width: 1920px) {
+  // styles for HD - Desktop
+}
+
+/* Tablet */
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+  // styles for Tablet
+}
+
+/* Smartphone */
+@media screen and (max-width: 700px) {
+  // styles for Smartphone
+}
