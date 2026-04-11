@@ -12,9 +12,6 @@
       <br>
       <br>
     </p>
-    <h3>Umsatzsteuer-Identifikationsnummer <br>
-      gemäß § 27 a Umsatzsteuergesetz:</h3>
-    <p>DE368274361</p>
     <h2>EU-Streitschlichtung </h2>
     <p>Die Europäische Kommission stellt eine Plattform zur <a href="https://ec.europa.eu/consumers/odr/">Online-Streitbeilegung (OS)</a> bereit:
       <br>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
